@@ -1,0 +1,31 @@
+CHUNK 631: Soybeans/Soya (Allergen #12)
+PEG: 631 = Leche (milk) + Mata (bush/plant)
+CONCEPTS: 1) Soya beans 2) Tofu 3) Edamame 4) Soy sauce 5) Miso 6) Tempeh 7) Soya oil 8) Soya lecithin 9) Asian cooking 10) Processed foods 11) Chocolate
+
+PROMPT:
+3D Pixar-style cartoon render, vibrant saturated colours, dramatic cinematic lighting, wide-angle shot showing COMPLETE scene with nothing cropped, all elements fully visible within the frame.
+
+Center: GIANT GREEN BUSH (Mata) with trunk and branches made of glossy dripping WHITE MILK — green soya bean pods hanging from milk-white branches, some pods bursting open showing beans. HERO 35%.
+
+Left stack (top to bottom): block of white TOFU with pristine surface, pile of green EDAMAME pods, bowl of dark MISO PASTE overflowing, sliced block of brown TEMPEH with visible fermentation pattern, SOYA BEANS scattered at base.
+
+Right stack (top to bottom): bottle labeled SOY SAUCE pouring dark liquid, bottle labeled SOYA OIL with amber oil, container labeled SOYA LECITHIN with powder, a WOK with stir-fry and chopsticks for ASIAN COOKING, CHOCOLATE BAR with label reading CONTAINS SOYA, food packages labeled PROCESSED FOOD with soya listed.
+
+Milk dripping from the bush onto everything. Asian kitchen garden setting.
+
+No watermarks, no logos, no UI elements.
+
+COVERAGE:
+✓ Soya beans = pods on bush + scattered at base
+✓ Tofu = white block (left top)
+✓ Edamame = green pods (left upper)
+✓ Soy sauce = bottle labeled SOY SAUCE (right top)
+✓ Miso = bowl overflowing (left middle)
+✓ Tempeh = brown block with pattern (left lower)
+✓ Soya oil = bottle labeled SOYA OIL (right upper)
+✓ Soya lecithin = container labeled SOYA LECITHIN (right middle)
+✓ Asian cooking = wok with chopsticks (right lower)
+✓ Processed foods = packages labeled PROCESSED FOOD (right base)
+✓ Chocolate = bar labeled CONTAINS SOYA (right lower)
+✓ Milk texture = HERO bush trunk/branches of dripping white milk
+✓ Mata = green bush plant

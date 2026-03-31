@@ -1,0 +1,30 @@
+CHUNK 629: Peanuts (Allergen #10)
+PEG: 629 = Leche (milk) + Naipe (playing card)
+CONCEPTS: 1) Peanuts in shell 2) Groundnuts 3) Peanut butter 4) Peanut oil 5) Peanut flour 6) Satay sauce 7) Legume not tree nut 8) Severe allergic reaction 9) Hidden in foods 10) Cross-contamination risk
+
+PROMPT:
+3D Pixar-style cartoon render, vibrant saturated colours, dramatic cinematic lighting, wide-angle shot showing COMPLETE scene with nothing cropped, all elements fully visible within the frame.
+
+Center: a GIANT PLAYING CARD (Naipe) tower made of glossy dripping WHITE MILK — oversized cards stacked in a wobbling house-of-cards structure, milk dripping off every edge, cards showing peanut-shaped suits instead of hearts/spades. HERO 35%.
+
+Left stack (top to bottom): jar labeled PEANUT BUTTER overflowing thick brown paste, bottle labeled PEANUT OIL pouring amber oil, bowl of PEANUT FLOUR with fine powder cloud rising, open PEANUT SHELLS cracked showing nuts inside, pile of golden GROUNDNUTS scattered at base.
+
+Right stack (top to bottom): bowl of SATAY SAUCE with visible peanut chunks and a skewer sticking out, a PEANUT PLANT pulled from soil showing roots with pods — labeled LEGUME NOT TREE NUT, a red EPI-PEN and red WARNING TRIANGLE showing SEVERE ALLERGIC REACTION danger, food packages with hidden peanut symbols showing HIDDEN IN FOODS, a red cutting board with peanut dust spreading to other foods showing CROSS-CONTAMINATION.
+
+Peanuts and milk splashing everywhere. Casino table green felt setting with dramatic spotlight.
+
+No watermarks, no logos, no UI elements.
+
+COVERAGE:
+✓ Peanuts = cracked shells showing nuts (left lower)
+✓ Groundnuts = golden pile scattered (left base)
+✓ Peanut butter = jar overflowing (left top)
+✓ Peanut oil = bottle pouring amber oil (left upper)
+✓ Peanut flour = bowl with powder cloud (left middle)
+✓ Satay sauce = bowl with chunks and skewer (right top)
+✓ Legume not tree nut = peanut plant with root pods (right upper)
+✓ Severe allergic reaction = epi-pen and warning triangle (right middle)
+✓ Hidden in foods = food packages with peanut symbols (right lower)
+✓ Cross-contamination = peanut dust spreading on cutting board (right base)
+✓ Milk texture = HERO card tower made of dripping white milk
+✓ Naipe = playing cards with peanut suits, casino setting

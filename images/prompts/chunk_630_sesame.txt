@@ -1,0 +1,30 @@
+CHUNK 630: Sesame (Allergen #11)
+PEG: 630 = Leche (milk) + Masa (dough)
+CONCEPTS: 1) Sesame seeds 2) Sesame oil 3) Tahini 4) Hummus 5) Breads 6) Bagels 7) Burger buns 8) Halva 9) Asian sauces 10) Sesame coating on foods
+
+PROMPT:
+3D Pixar-style cartoon render, vibrant saturated colours, dramatic cinematic lighting, wide-angle shot showing COMPLETE scene with nothing cropped, all elements fully visible within the frame. Bakery kitchen setting with warm golden light.
+
+Center: GIANT round DOUGH BALL made of glossy white milk, wobbling, milk dripping down sides, covered in sesame seeds. On a floured wooden counter. HERO 35%.
+
+Left stack (top to bottom): bottle labeled SESAME OIL pouring amber oil, jar labeled TAHINI overflowing cream paste, bowl of HUMMUS with olive oil swirl, pile of tiny golden SESAME SEEDS.
+
+Right stack (top to bottom): bottles labeled SOY SAUCE with sesame seeds inside, golden HALVA block crumbling, BURGER BUN with sesame seed top, sliced BAGEL with sesame seeds, BREAD loaves with sesame crust.
+
+Sesame seeds raining everywhere. Milk puddles on counter.
+
+No watermarks, no logos, no UI elements.
+
+COVERAGE:
+✓ Sesame seeds = pile + raining everywhere
+✓ Sesame oil = bottle labeled SESAME OIL (left top)
+✓ Tahini = jar labeled TAHINI (left)
+✓ Hummus = bowl (left)
+✓ Breads = loaves with sesame crust (right base)
+✓ Bagels = sliced with seeds (right)
+✓ Burger buns = bun with sesame top (right)
+✓ Halva = golden block (right)
+✓ Asian sauces = bottles labeled SOY SAUCE (right top)
+✓ Sesame coating = seeds on everything
+✓ Milk texture = HERO dough ball of white milk
+✓ Masa = round dough ball

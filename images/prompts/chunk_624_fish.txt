@@ -1,0 +1,36 @@
+CHUNK 624: Fish (Allergen #5)
+PEG: 624 = Leche (milk) + Noria (ferris wheel)
+CONCEPTS: 1) Salmon 2) Cod 3) Trout 4) Haddock 5) Anchovies in open tin 6) Anchovy paste tube 7) Worcestershire sauce bottle 8) Fish sauce bottle 9) Caesar salad bowl
+
+PROMPT:
+3D Pixar-style cartoon render, vibrant saturated colours, dramatic cinematic lighting, wide-angle shot showing the COMPLETE scene with nothing cropped, all elements fully visible within the frame.
+
+Background: a LARGE white milk ferris wheel, glossy dripping liquid milk texture, milk splashing off the spokes. Four oversized cartoon fish with big Pixar eyes ride in the cabins: a PINK SALMON, a pale WHITE COD, a speckled BROWN TROUT, and a slim GREY HADDOCK with dark stripe. The ferris wheel drips milk everywhere.
+
+Foreground: five items arranged in a semicircle on the ground, all fully visible and not cropped, each item the size of a small car:
+
+Left: a dark brown bottle clearly labeled WORCESTERSHIRE SAUCE in large white letters, sauce pouring out onto the ground.
+
+Center-left: an OPEN TIN CAN overflowing with dozens of tiny silver ANCHOVIES jumping and leaping out like a fountain.
+
+Center: a large squeezable tube clearly labeled ANCHOVY PASTE in big red letters, squirting brown paste in a dramatic arc.
+
+Center-right: a clear glass bottle clearly labeled FISH SAUCE in large letters, amber liquid splashing out the top.
+
+Right: a huge ceramic bowl of CAESAR SALAD with thick creamy white dressing, green lettuce, croutons, and anchovy fillets visible on top, the bowl overflowing.
+
+Everything splashed with white milk dripping from the ferris wheel above. Ground is wet with milk puddles. Energetic, chaotic, fun carnival atmosphere.
+
+No watermarks, no logos, no UI elements.
+
+COVERAGE:
+✓ Salmon = pink fish in ferris wheel cabin
+✓ Cod = white fish in ferris wheel cabin
+✓ Trout = speckled brown fish in ferris wheel cabin
+✓ Haddock = grey fish with dark stripe in ferris wheel cabin
+✓ Anchovies = jumping from open tin can (center-left)
+✓ Anchovy paste = tube squirting paste, label visible (center)
+✓ Worcestershire sauce = bottle pouring, label visible (left)
+✓ Fish sauce = bottle splashing, label visible (center-right)
+✓ Caesar salad = overflowing bowl with dressing and croutons (right)
+✓ Milk texture = HERO ferris wheel made of dripping milk, puddles everywhere

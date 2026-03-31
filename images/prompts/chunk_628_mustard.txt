@@ -1,0 +1,31 @@
+CHUNK 628: Mustard (Allergen #9)
+PEG: 628 = Leche (milk) + Nicho (wall niche/alcove)
+CONCEPTS: 1) Yellow mustard 2) Wholegrain mustard 3) Dijon mustard 4) Mustard powder 5) Mustard seeds 6) Mustard leaves 7) Mustard oil 8) Marinades 9) Dressings 10) Piccalilli 11) Cumberland sauce
+
+PROMPT:
+3D Pixar-style cartoon render, vibrant saturated colours, dramatic cinematic lighting, wide-angle shot showing COMPLETE scene with nothing cropped, all elements fully visible within the frame.
+
+Center: a GIANT ornate STONE WALL ALCOVE made of glossy dripping WHITE MILK — arched carved shape with milk flowing down edges and pooling at base. Inside the alcove, a huge jar of bright YELLOW MUSTARD overflowing golden sauce. HERO 35%.
+
+Left stack (top to bottom): jar labeled DIJON with pale mustard, stone pot of WHOLEGRAIN MUSTARD with visible seeds, bowl of MUSTARD POWDER with golden dust cloud, pile of tiny round MUSTARD SEEDS spilling, green MUSTARD LEAVES sprouting at base.
+
+Right stack (top to bottom): bottle labeled MUSTARD OIL pouring amber oil, bowl of dark MARINADE with brush dripping, glass bottle labeled DRESSING with creamy liquid splashing, jar labeled PICCALILLI with yellow chunks and vegetables, dark bottle labeled CUMBERLAND SAUCE pouring dark sauce.
+
+Golden mustard and white milk splashes everywhere. Old stone kitchen with warm candlelight.
+
+No watermarks, no logos, no UI elements.
+
+COVERAGE:
+✓ Yellow mustard = huge jar overflowing inside alcove (center)
+✓ Wholegrain mustard = stone pot with visible seeds (left)
+✓ Dijon mustard = jar labeled DIJON (left top)
+✓ Mustard powder = bowl with golden dust (left middle)
+✓ Mustard seeds = pile spilling (left lower)
+✓ Mustard leaves = green leaves sprouting (left base)
+✓ Mustard oil = bottle labeled MUSTARD OIL (right top)
+✓ Marinades = bowl with brush (right upper)
+✓ Dressings = bottle labeled DRESSING (right middle)
+✓ Piccalilli = jar labeled PICCALILLI (right lower)
+✓ Cumberland sauce = dark bottle labeled CUMBERLAND SAUCE (right base)
+✓ Milk texture = HERO alcove made of dripping white milk
+✓ Nicho = arched wall alcove shape

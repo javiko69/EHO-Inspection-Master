@@ -1,0 +1,34 @@
+CHUNK 633: Tree Nuts (Allergen #14)
+PEG: 633 = Leche (milk) + Mamá (mother)
+CONCEPTS: 1) Almonds 2) Hazelnuts 3) Walnuts 4) Cashews 5) Pecans 6) Pistachios 7) Macadamia 8) Brazil nuts 9) Nut butters 10) Nut oils 11) Marzipan 12) Praline 13) Nougat 14) Cross-contamination
+
+PROMPT:
+3D Pixar-style cartoon render, vibrant saturated colours, dramatic cinematic lighting, wide-angle shot showing COMPLETE scene with nothing cropped, all elements fully visible within the frame.
+
+Center: a GIANT MOTHER FIGURE (Mamá) sculpted from glossy dripping WHITE MILK — big Pixar eyes, warm smile, milk-white dress dripping cream, arms open wide cradling nuts. HERO 35%.
+
+Left stack (top to bottom): cream ALMONDS in a pile, round HAZELNUTS with brown shells, brain-textured WALNUTS, curved CASHEWS, dark mahogany PECANS, bright green split PISTACHIOS, round white MACADAMIA nuts, large BRAZIL NUTS at base.
+
+Right stack (top to bottom): jar labeled NUT BUTTER overflowing, bottle labeled NUT OIL pouring golden oil, yellow block of MARZIPAN with almond shapes pressed in, swirl of brown PRALINE with visible caramel, block of white NOUGAT with nuts embedded, red WARNING SIGN for CROSS-CONTAMINATION with nut dust cloud spreading.
+
+Autumn forest clearing with golden leaves. Nuts scattered on the ground everywhere. Milk puddles around Mamá.
+
+No watermarks, no logos, no UI elements.
+
+COVERAGE:
+✓ Almonds = cream pile (left top)
+✓ Hazelnuts = round brown shells (left)
+✓ Walnuts = brain-textured (left)
+✓ Cashews = curved shape (left)
+✓ Pecans = dark mahogany (left)
+✓ Pistachios = green split open (left)
+✓ Macadamia = round white (left)
+✓ Brazil nuts = large at base (left)
+✓ Nut butters = jar labeled NUT BUTTER (right top)
+✓ Nut oils = bottle labeled NUT OIL (right)
+✓ Marzipan = yellow block with almond shapes (right)
+✓ Praline = brown caramel swirl (right)
+✓ Nougat = white block with nuts (right)
+✓ Cross-contamination = warning sign with nut dust (right base)
+✓ Milk texture = HERO Mamá made of dripping white milk
+✓ Mamá = mother figure with open arms

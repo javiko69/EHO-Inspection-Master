@@ -1,0 +1,32 @@
+CHUNK 627: Molluscs (Allergen #8)
+PEG: 627 = Leche (milk) + Inca (Inca warrior)
+CONCEPTS: 1) Mussels 2) Oysters 3) Clams 4) Squid 5) Octopus 6) Snails 7) Oyster sauce 8) Paella 9) Seafood risotto 10) Cross-contamination
+
+PROMPT:
+3D Pixar-style cartoon render, vibrant saturated colours, dramatic cinematic lighting, wide-angle shot showing COMPLETE scene with nothing cropped, all elements fully visible within the frame.
+
+Center: GIANT INCA WARRIOR sculpted from glossy dripping WHITE MILK — golden Inca headdress with feathers, milk dripping off armour plates, milk-white face with huge Pixar eyes, holding a golden spear. Standing on a stone Inca temple platform. HERO 35%.
+
+Left stack (top to bottom): a SQUID with long tentacles wrapping around the Inca's spear, a cluster of dark MUSSELS with purple-black shells bursting open, OYSTERS gaping open showing pearls inside, small ribbed CLAMS scattered at base.
+
+Right stack (top to bottom): a huge red OCTOPUS with 8 tentacles draped over the temple wall, SNAILS with spiral shells crawling down the wall, dark bottle labeled OYSTER SAUCE pouring brown liquid, at base a red WARNING SIGN with raw shellfish touching salad showing CROSS-CONTAMINATION.
+
+Foreground: a GIANT PAELLA PAN bubbling with yellow rice, mussels, squid rings and prawns visible. Next to it a bowl of creamy white SEAFOOD RISOTTO overflowing.
+
+Milk splashes and puddles on the temple stones. Inca gold and milk white colour scheme.
+
+No watermarks, no logos, no UI elements.
+
+COVERAGE:
+✓ Mussels = purple-black shells bursting open (left middle)
+✓ Oysters = gaping open showing pearls (left lower)
+✓ Clams = ribbed shells scattered (left base)
+✓ Squid = tentacles wrapping spear (left top)
+✓ Octopus = 8 tentacles draped over wall (right top)
+✓ Snails = spiral shells crawling (right middle)
+✓ Oyster sauce = bottle labeled OYSTER SAUCE (right lower)
+✓ Paella = giant pan with rice and seafood (foreground left)
+✓ Seafood risotto = creamy bowl overflowing (foreground right)
+✓ Cross-contamination = warning sign with raw shellfish touching salad (right base)
+✓ Milk texture = HERO Inca warrior made entirely of dripping white milk
+✓ Inca = golden headdress, armour, spear, temple setting

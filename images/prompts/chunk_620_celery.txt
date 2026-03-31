@@ -1,0 +1,24 @@
+CHUNK 620: Celery (Allergen #1)
+PEG: 620 = Leche (milk) + Nasa (NASA rocket)
+CONCEPTS: 1) Fresh celery stalks 2) Celeriac root 3) Celery salt 4) Celery powder 5) Stocks 6) Soups 7) Seasonings 8) Bouillon 9) Consommé 10) Bloody Mary mix 11) Must declare on menu
+
+PROMPT:
+3D Pixar-style cartoon render, vibrant saturated colours, dramatic cinematic lighting with volumetric god rays, dynamic low-angle wide shot.
+
+A NASA ROCKET (our peg object, made entirely of glossy white milk, gleaming with internal luminescence) stands on a launch pad surrounded by a mystical vegetable garden. Fresh green CELERY STALKS stand like soldiers at attention, catching morning light on their ridged surfaces. A massive CELERIAC ROOT (pale cream-colored, bulbous and earthy) sits beside the milk-rocket like an alien artifact. Jars of CELERY SALT sparkle with crystalline texture. Piles of fine CELERY POWDER create soft dunes. Steaming pots of STOCKS and SOUPS with visible celery chunks bubble gently. Boxes of BOUILLON cubes and jars of concentrated CONSOMMÉ gleam on shelves. A vintage glass bottle of BLOODY MARY MIX sits front-and-center with visible celery garnish suggestion. Everything is bathed in warm, golden kitchen light. The milk-rocket's launch window glows with an impossible blue-white intensity. Celery leaves and stems create a natural frame around the scene. Small warning tags reading "MUST DECLARE" shimmer subtly in the composition.
+
+No text, no watermarks, no logos, no UI elements.
+
+COVERAGE:
+✓ Fresh celery = standing soldier stalks (center-left)
+✓ Celeriac = pale bulbous root (center-right)
+✓ Celery salt = sparkling jars (left side)
+✓ Celery powder = fine dune piles (right side)
+✓ Stocks = steaming pots (upper-left)
+✓ Soups = visible chunk contents (center-back)
+✓ Seasonings = distributed throughout
+✓ Bouillon = cubes on shelves (upper-right)
+✓ Consommé = concentrated jars (upper-center)
+✓ Bloody Mary mix = prominent front-center bottle
+✓ Must declare = subtle shimmer tags (periphery)
+✓ Milk/NASA rocket = hero glowing center element

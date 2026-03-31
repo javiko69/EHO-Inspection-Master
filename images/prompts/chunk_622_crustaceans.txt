@@ -1,0 +1,34 @@
+CHUNK 622: Crustaceans (Allergen #3)
+PEG: 622 = Leche (milk) + Nana (grandmother)
+CONCEPTS: 1) Prawns 2) Crabs 3) Lobster 4) Crayfish 5) Langoustine 6) Shrimp paste 7) Crab sticks 8) Bisque soup 9) Fish stock carton 10) Thai curry paste 11) Cross-contamination in fish prep area
+
+PROMPT:
+3D Pixar-style cartoon render, vibrant saturated colours, dramatic cinematic lighting, dynamic low-angle wide shot, shallow depth of field.
+
+A COLOSSAL GRANDMOTHER (Nana) sculpted entirely from glossy flowing WHITE MILK — her skin is liquid milk, her apron drips thick cream, her hair bun is a swirl of white milk frozen mid-splash, her round glasses have milk dripping off the rims — she is the GIANT HERO CENTER of the frame taking up 40% of the image. She stands in a chaotic commercial kitchen.
+
+In her RIGHT HAND she holds up a cluster of five DISTINCT crustaceans fanned out like a bouquet, each one clearly different and recognisable: (1) a large curved ORANGE PRAWN with long whiskers, (2) a round-shelled BLUE CRAB with wide flat pincers, (3) a big RED LOBSTER with long narrow claws, (4) a small brown-green CRAYFISH, and (5) a slender PINK LANGOUSTINE with a long thin body.
+
+In her LEFT HAND she holds a bundle of CRAB STICKS — the classic surimi sticks, white with orange stripes, clearly recognisable processed food sticks.
+
+On the counter in front of her, arranged clearly from left to right: a dark AMBER JAR of SHRIMP PASTE with visible thick brown paste inside, a large steaming POT of orange creamy BISQUE overflowing, a TETRA PAK CARTON with the label FISH STOCK clearly printed on it, and a small round opened TIN of red THAI CURRY PASTE with a shrimp printed on the tin.
+
+Behind the Nana, a RED CUTTING BOARD with raw prawns is placed touching a GREEN CUTTING BOARD with salad — showing CROSS-CONTAMINATION danger, with a red warning glow between the two boards.
+
+Milk splashes and puddles everywhere on the floor and counter. The grandmother figure is unmistakably made of flowing white liquid milk — translucent, dripping, glossy. The mood is chaotic, warm, absurdly busy.
+
+No watermarks, no logos, no UI elements.
+
+COVERAGE:
+✓ Prawns = orange curved prawn in right hand bouquet
+✓ Crab = blue round-shell crab in right hand bouquet
+✓ Lobster = red lobster with long claws in right hand bouquet
+✓ Crayfish = small brown-green crayfish in right hand bouquet
+✓ Langoustine = pink slender langoustine in right hand bouquet
+✓ Shrimp paste = dark amber jar on counter (left)
+✓ Crab sticks = white-orange surimi sticks in left hand
+✓ Bisque = steaming orange pot on counter (center)
+✓ Fish stock = tetra pak carton labeled FISH STOCK on counter
+✓ Thai curry paste = opened red tin with shrimp on counter (right)
+✓ Cross-contamination = red board touching green board behind
+✓ Milk texture = HERO grandmother entirely made of flowing white milk

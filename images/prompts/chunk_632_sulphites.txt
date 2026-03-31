@@ -1,0 +1,32 @@
+CHUNK 632: Sulphur Dioxide & Sulphites (Allergen #13, >10ppm)
+PEG: 632 = Leche (milk) + Maná (manna from heaven)
+CONCEPTS: 1) Wine 2) Cider 3) Dried fruit (raisins/apricots/dates) 4) Processed meats 5) Sausages 6) 10ppm threshold 7) Preservative action 8) Asthma trigger 9) Chemical indicator 10) Warning signs
+
+PROMPT:
+3D Pixar-style cartoon render, vibrant saturated colours, dramatic cinematic lighting, wide-angle shot showing COMPLETE scene with nothing cropped, all elements fully visible within the frame.
+
+Center: MANNA raining from golden clouds above — glowing WHITE MILK droplets falling from the sky like divine rain, splashing on everything below. The milk-manna rain is the HERO taking up the top 35% of the image.
+
+Left stack (top to bottom): red WINE BOTTLE with dark red liquid pouring out, amber CIDER BOTTLE with golden liquid splashing, pile of DRIED FRUIT including dark RAISINS and orange APRICOTS and brown DATES, hanging SAUSAGE links with visible preservative coating.
+
+Right stack (top to bottom): sliced PROCESSED MEATS on a board, a glowing yellow sign reading 10PPM as the danger threshold, a blue ASTHMA INHALER puffing out spray, a yellow CHEMICAL HAZARD SYMBOL triangle, a red WARNING SIGN with skull symbol.
+
+Foreground: crystalline white powder (sulphite preservative) dusted over all the foods. Yellow-green chemical gas wisps rising from the foods.
+
+Divine golden sky above, dark marketplace below. Dramatic contrast.
+
+No watermarks, no logos, no UI elements.
+
+COVERAGE:
+✓ Wine = red wine bottle pouring (left top)
+✓ Cider = amber cider bottle splashing (left upper)
+✓ Dried fruit = raisins, apricots, dates pile (left middle)
+✓ Processed meats = sliced on board (right top)
+✓ Sausages = hanging links (left lower)
+✓ 10ppm threshold = glowing yellow sign reading 10PPM (right middle)
+✓ Preservative action = crystalline powder on foods (foreground)
+✓ Asthma trigger = blue inhaler puffing (right lower)
+✓ Chemical indicator = hazard symbol triangle (right lower)
+✓ Warning signs = red warning sign (right base)
+✓ Milk texture = HERO manna rain of white milk droplets from sky
+✓ Maná = divine rain from golden clouds

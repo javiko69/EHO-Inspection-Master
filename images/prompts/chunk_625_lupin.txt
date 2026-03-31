@@ -1,0 +1,28 @@
+CHUNK 625: Lupin (Allergen #6)
+PEG: 625 = Leche (milk) + Nilo (the Nile river)
+CONCEPTS: 1) Lupin plant with purple flowers 2) Lupin seeds 3) Lupin flour 4) Gluten-free bread 5) Gluten-free biscuits 6) Gluten-free pastries 7) Imported food packages to check
+
+PROMPT:
+3D Pixar-style cartoon render, vibrant saturated colours, dramatic cinematic lighting, wide-angle shot showing COMPLETE scene with nothing cropped, all elements fully visible within the frame.
+
+Background: a wide RIVER OF WHITE MILK (the Nile) flowing through an Egyptian desert with pyramids, the river is glossy flowing liquid milk with splashes and waves, glowing white. The milk river is the HERO taking up the full width of the scene.
+
+On the milk river, floating and spinning in the current: a bag of LUPIN FLOUR spilling yellow powder into the milk, a loaf of GLUTEN-FREE BREAD with a label reading GLUTEN FREE, a pile of golden BISCUITS on a floating tray, and fancy PASTRIES with cream overflowing from a floating basket.
+
+On the riverbanks: tall LUPIN PLANTS with distinctive PURPLE-BLUE flower spikes growing wild, their SEED PODS bursting open scattering small round yellow LUPIN SEEDS everywhere like marbles.
+
+Foreground: imported food CARDBOARD BOXES tumbling into the milk river, some with labels reading IMPORTED and CHECK INGREDIENTS, one box has a magnifying glass hovering over it suggesting hidden danger.
+
+Milk splashing everywhere from the river. Seeds bouncing. Flour clouds in the air. Egyptian atmosphere with warm golden light.
+
+No watermarks, no logos, no UI elements.
+
+COVERAGE:
+✓ Lupin plant = purple-blue flower spikes on riverbanks
+✓ Lupin seeds = small yellow seeds scattering from burst pods
+✓ Lupin flour = bag spilling yellow powder into milk river
+✓ Gluten-free bread = loaf floating with GLUTEN FREE label
+✓ Biscuits = golden biscuits on floating tray
+✓ Pastries = cream pastries in floating basket
+✓ Imported foods = cardboard boxes with CHECK INGREDIENTS labels
+✓ Milk texture = HERO Nile river made entirely of flowing white milk

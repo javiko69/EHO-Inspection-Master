@@ -1,0 +1,32 @@
+CHUNK 626: Milk/Dairy (Allergen #7)
+PEG: 626 = Leche (milk) + Anejo (aged/old — like aged rum or aged cheese)
+CONCEPTS: 1) Milk bottles 2) Yoghurt pots 3) Cheese wheels 4) Butter blocks 5) Cream jug 6) Ghee jar 7) Buttermilk carton 8) Whey protein 9) Lactose additive 10) Medications/supplements
+
+PROMPT:
+3D Pixar-style cartoon render, vibrant saturated colours, dramatic cinematic lighting, wide-angle shot showing COMPLETE scene with nothing cropped, all elements fully visible within the frame.
+
+Center: GIANT AGED CHEESE WHEEL with face, white milk-drip beard, tiny crown, on wooden barrel. Made of dripping glossy white milk. HERO 30%.
+
+Left stack (top to bottom): YOGHURT POTS stacked erupting on top, glass MILK BOTTLES overflowing below, golden BUTTER BLOCKS melting at bottom.
+
+Right stack (top to bottom): large tub labeled WHEY PROTEIN exploding white powder on top, bottle labeled LACTOSE with white powder pile in middle, medicine bottle with colourful PILLS spilling out at bottom next to supplement jar.
+
+Foreground row (left to right): CHEESE WHEELS oozing, CREAM JUG tipped pouring, jar labeled GHEE glowing golden, carton labeled BUTTERMILK splashing sideways.
+
+Milk splashes and puddles everywhere. Old wooden European kitchen.
+
+No watermarks, no logos, no UI elements.
+
+COVERAGE:
+✓ Milk = overflowing glass bottles (left stack middle)
+✓ Yoghurt = erupting pots (left stack top)
+✓ Cheese = oozing wheels (foreground left)
+✓ Butter = melting golden blocks (left stack bottom)
+✓ Cream = tipped jug pouring (foreground center-left)
+✓ Ghee = golden jar labeled GHEE (foreground center-right)
+✓ Buttermilk = carton labeled BUTTERMILK splashing (foreground right)
+✓ Whey = tub labeled WHEY PROTEIN exploding powder (right stack top)
+✓ Lactose = bottle labeled LACTOSE with white powder (right stack middle)
+✓ Medications/supplements = medicine bottle with pills + supplement jar (right stack bottom)
+✓ Milk texture = HERO aged cheese made entirely of dripping white milk
+✓ Anejo = aged appearance with beard, crown, old barrel

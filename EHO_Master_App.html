@@ -1,0 +1,1867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EHO Master</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --dark-green: #1B4332;
+            --white: #FFFFFF;
+            --amber: #F59E0B;
+            --danger: #DC2626;
+            --light-green: #40916C;
+            --pale-green: #D8F3DC;
+            --light-gray: #F3F4F6;
+            --mid-gray: #6B7280;
+            --success: #10B981;
+            --success-dark: #059669;
+            --success-bg: #ECFDF5;
+            --danger-bg: #FEF2F2;
+            --warning-bg: #FEF3C7;
+            --border-radius: 8px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background-color: var(--light-gray);
+            color: var(--dark-green);
+            line-height: 1.6;
+            padding-bottom: 80px;
+        }
+
+        /* HEADER */
+        .app-header {
+            background-color: var(--dark-green);
+            color: var(--white);
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 4px solid var(--amber);
+        }
+
+        .app-header h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+        }
+
+        /* MAIN CONTENT */
+        .main-content {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        /* BOTTOM NAVIGATION */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--white);
+            border-top: 2px solid var(--light-green);
+            display: flex;
+            justify-content: space-around;
+            padding: 0.5rem 0;
+            z-index: 100;
+            box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-btn {
+            flex: 1;
+            padding: 0.75rem;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--mid-gray);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .nav-btn.active {
+            color: var(--dark-green);
+            background-color: var(--pale-green);
+        }
+
+        .nav-btn:hover {
+            color: var(--light-green);
+        }
+
+        /* MODE SCREENS */
+        .screen {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .screen.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* CARDS */
+        .card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        /* PROGRESS BAR */
+        .progress-bar-container {
+            width: 100%;
+            height: 8px;
+            background-color: var(--light-gray);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background-color: var(--light-green);
+            transition: width 0.3s ease;
+        }
+
+        /* TOPIC PILLS */
+        .topic-pills {
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            scroll-behavior: smooth;
+        }
+
+        .topic-pill {
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--light-green);
+            background-color: var(--white);
+            color: var(--light-green);
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .topic-pill.active {
+            background-color: var(--light-green);
+            color: var(--white);
+        }
+
+        .topic-pill:hover {
+            border-color: var(--dark-green);
+        }
+
+        /* BUTTONS */
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: var(--light-green);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--dark-green);
+        }
+
+        .btn-secondary {
+            background-color: var(--light-gray);
+            color: var(--dark-green);
+            border: 2px solid var(--dark-green);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--pale-green);
+        }
+
+        .btn-danger {
+            background-color: var(--danger);
+            color: var(--white);
+        }
+
+        .btn-danger:hover {
+            background-color: #B91C1C;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .btn-group .btn {
+            flex: 1;
+        }
+
+        /* LEARN MODE */
+        .chunk-counter {
+            font-size: 0.9rem;
+            color: var(--mid-gray);
+            margin-bottom: 1rem;
+        }
+
+        .chunk-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--amber);
+            margin-bottom: 0.5rem;
+        }
+
+        .chunk-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark-green);
+            margin-bottom: 1rem;
+        }
+
+        .chunk-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .chunk-section h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--light-green);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .chunk-section ul {
+            margin-left: 1.5rem;
+            list-style: disc;
+        }
+
+        .chunk-section li {
+            margin-bottom: 0.5rem;
+            color: var(--dark-green);
+        }
+
+        .chunk-example {
+            background-color: var(--pale-green);
+            padding: 1rem;
+            border-left: 4px solid var(--light-green);
+            margin-top: 0.5rem;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            color: var(--dark-green);
+        }
+
+        .chunk-image {
+            margin-top: 0.75rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .chunk-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .chunk-mnemonic {
+            background-color: var(--warning-bg);
+            padding: 1rem;
+            border-left: 4px solid var(--amber);
+            margin-top: 0.5rem;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            color: var(--dark-green);
+            font-style: italic;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            justify-content: space-between;
+        }
+
+        .navigation-buttons .btn {
+            flex: 1;
+        }
+
+        /* QUIZ MODE */
+        .quiz-score {
+            background-color: var(--pale-green);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 1rem;
+            text-align: center;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--dark-green);
+        }
+
+        .quiz-streak {
+            color: var(--amber);
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+        }
+
+        .quiz-question {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--dark-green);
+            margin-bottom: 1.5rem;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .quiz-option {
+            padding: 1rem;
+            border: 2px solid var(--light-gray);
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 500;
+            color: var(--dark-green);
+        }
+
+        .quiz-option:hover {
+            border-color: var(--light-green);
+            background-color: var(--pale-green);
+        }
+
+        .quiz-option.selected {
+            border-color: var(--light-green);
+            background-color: var(--pale-green);
+        }
+
+        .quiz-option.correct {
+            border-color: var(--success);
+            background-color: var(--success-bg);
+            color: var(--success-dark);
+            font-weight: 700;
+        }
+
+        .quiz-option.incorrect {
+            border-color: var(--danger);
+            background-color: var(--danger-bg);
+            color: var(--danger);
+            font-weight: 700;
+        }
+
+        .quiz-feedback {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .quiz-feedback.correct {
+            background-color: var(--success-bg);
+            color: var(--success-dark);
+        }
+
+        .quiz-feedback.incorrect {
+            background-color: var(--danger-bg);
+            color: var(--danger);
+        }
+
+        /* DRILL MODE */
+        .scenario-text {
+            font-size: 1.1rem;
+            color: var(--dark-green);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .scenario-label {
+            font-size: 0.9rem;
+            color: var(--mid-gray);
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .scenario-textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 1rem;
+            border: 2px solid var(--light-gray);
+            border-radius: var(--border-radius);
+            font-family: inherit;
+            font-size: 1rem;
+            resize: vertical;
+        }
+
+        .scenario-textarea:focus {
+            outline: none;
+            border-color: var(--light-green);
+            box-shadow: 0 0 0 3px rgba(64, 145, 108, 0.1);
+        }
+
+        .model-answer {
+            background-color: var(--pale-green);
+            padding: 1rem;
+            border-left: 4px solid var(--light-green);
+            margin-top: 1rem;
+            border-radius: 4px;
+            color: var(--dark-green);
+            display: none;
+        }
+
+        .model-answer.show {
+            display: block;
+        }
+
+        .model-answer-title {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--light-green);
+        }
+
+        /* REVIEW MODE */
+        .flashcard {
+            background: linear-gradient(135deg, var(--dark-green), var(--light-green));
+            color: var(--white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 12px rgba(27, 67, 50, 0.3);
+        }
+
+        .flashcard:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(27, 67, 50, 0.4);
+        }
+
+        .flashcard-content {
+            font-size: 1.25rem;
+            font-weight: 600;
+            line-height: 1.6;
+        }
+
+        .flashcard-label {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .flashcard-counter {
+            font-size: 0.9rem;
+            color: var(--mid-gray);
+            margin-bottom: 1rem;
+        }
+
+        /* ALERTS MODE */
+        .red-flag-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background-color: var(--white);
+            border: 2px solid var(--light-gray);
+            border-radius: var(--border-radius);
+            margin-bottom: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .red-flag-item:hover {
+            border-color: var(--light-green);
+        }
+
+        .red-flag-item.checked {
+            border-color: var(--success);
+            background-color: var(--success-bg);
+        }
+
+        .red-flag-checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--light-gray);
+            border-radius: 4px;
+            margin-right: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            background-color: var(--white);
+            transition: all 0.2s ease;
+        }
+
+        .red-flag-item.checked .red-flag-checkbox {
+            background-color: #10B981;
+            border-color: var(--success);
+            color: var(--white);
+            font-weight: 700;
+        }
+
+        .red-flag-text {
+            font-weight: 500;
+            color: var(--dark-green);
+        }
+
+        .success-message {
+            background-color: var(--success-bg);
+            color: var(--success-dark);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: slideUp 0.5s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* RESPONSIVENESS */
+        @media (max-width: 600px) {
+            body {
+                padding-bottom: 90px;
+            }
+
+            .app-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .main-content {
+                padding: 0.75rem;
+            }
+
+            .card {
+                padding: 1rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .chunk-title {
+                font-size: 1.25rem;
+            }
+
+            .flashcard {
+                min-height: 200px;
+                padding: 1.5rem;
+            }
+
+            .flashcard-content {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* UTILITY */
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-1 {
+            margin-top: 1rem;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-header">
+        <h1>EHO Master</h1>
+    </div>
+
+    <div class="main-content">
+        <!-- LEARN SCREEN -->
+        <div id="learn-screen" class="screen active">
+            <div class="topic-pills" id="topic-pills-container"></div>
+            <div class="progress-bar-container">
+                <div class="progress-bar-fill" id="learn-progress"></div>
+            </div>
+            <div class="card">
+                <div class="chunk-counter" id="learn-counter"></div>
+                <div class="chunk-number" id="chunk-number"></div>
+                <div class="chunk-title" id="chunk-title"></div>
+                <div id="chunk-content"></div>
+                <div class="navigation-buttons">
+                    <button class="btn btn-secondary" id="learn-prev-btn">Previous</button>
+                    <button class="btn btn-primary" id="learn-next-btn">Next</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUIZ SCREEN -->
+        <div id="quiz-screen" class="screen">
+            <div class="card">
+                <div class="quiz-score">
+                    Score: <span id="quiz-score-value">0</span>/20
+                    <div class="quiz-streak" id="quiz-streak">Streak: 0</div>
+                </div>
+                <div class="quiz-question" id="quiz-question-text"></div>
+                <div class="quiz-options" id="quiz-options"></div>
+                <div id="quiz-feedback-container"></div>
+                <button class="btn btn-primary" id="quiz-next-btn" style="width: 100%; margin-top: 1rem; display: none;">Next Question</button>
+            </div>
+        </div>
+
+        <!-- DRILL SCREEN -->
+        <div id="drill-screen" class="screen">
+            <div class="card">
+                <div class="chunk-counter" id="drill-counter"></div>
+                <div class="scenario-text" id="scenario-text"></div>
+                <div class="scenario-label">Your Response:</div>
+                <textarea id="scenario-response" class="scenario-textarea" placeholder="Type your response here..."></textarea>
+                <button class="btn btn-primary" id="drill-submit-btn" style="width: 100%; margin-top: 1rem;">Submit</button>
+                <div class="model-answer" id="model-answer">
+                    <div class="model-answer-title">Best Practice Response:</div>
+                    <div id="model-answer-text"></div>
+                </div>
+                <button class="btn btn-secondary" id="drill-next-btn" style="width: 100%; margin-top: 1rem; display: none;">Next Scenario</button>
+            </div>
+        </div>
+
+        <!-- REVIEW SCREEN -->
+        <div id="review-screen" class="screen">
+            <div class="card">
+                <div class="flashcard-counter" id="review-counter"></div>
+                <div class="flashcard" id="flashcard">
+                    <div class="flashcard-content" id="flashcard-content"></div>
+                </div>
+                <div class="navigation-buttons">
+                    <button class="btn btn-secondary" id="review-prev-btn">Previous</button>
+                    <button class="btn btn-primary" id="review-next-btn">Next Card</button>
+                </div>
+                <button class="btn btn-secondary" id="review-reset-btn" style="width: 100%; margin-top: 0.5rem;">Reset Deck</button>
+            </div>
+        </div>
+
+        <!-- ALERTS SCREEN -->
+        <div id="alerts-screen" class="screen">
+            <div class="card">
+                <div class="progress-bar-container">
+                    <div class="progress-bar-fill" id="alerts-progress"></div>
+                </div>
+                <div id="red-flags-container"></div>
+                <div class="success-message" id="success-message">
+                    Perfect! All red flags identified. You're ready for inspection!
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BOTTOM NAVIGATION -->
+    <div class="bottom-nav">
+        <button class="nav-btn active" data-screen="learn-screen">
+            <span>📚</span>
+            <span>Learn</span>
+        </button>
+        <button class="nav-btn" data-screen="quiz-screen">
+            <span>✓</span>
+            <span>Quiz</span>
+        </button>
+        <button class="nav-btn" data-screen="drill-screen">
+            <span>🎭</span>
+            <span>Drill</span>
+        </button>
+        <button class="nav-btn" data-screen="review-screen">
+            <span>🔄</span>
+            <span>Review</span>
+        </button>
+        <button class="nav-btn" data-screen="alerts-screen">
+            <span>🚩</span>
+            <span>Alerts</span>
+        </button>
+    </div>
+
+    <script>
+        // ============================================
+        // DATA STRUCTURE
+        // ============================================
+
+        const chunks = [
+            {
+                id: 600,
+                topic: 'EHO Fundamentals',
+                title: 'What is an EHO Inspection?',
+                keyPoints: [
+                    'EHO = Environmental Health Officer',
+                    'Visits without prior notice, any day',
+                    'Inspections every 6 months to 3 years depending on risk',
+                    'Assesses food safety, premises and management',
+                    'Determines your Food Hygiene Rating (Scores on the Doors)'
+                ],
+                example: 'The inspector arrives at 2:15 PM unannounced. You must stay calm, professional, and ready to show your systems.',
+                mnemonic: '600 = Leche + Oso: Un oso hecho de leche blanca entra en la cocina sin avisar.'
+            },
+            {
+                id: 601,
+                topic: 'EHO Fundamentals',
+                title: 'The 3 Scoring Pillars',
+                keyPoints: [
+                    'Pillar 1: Food Hygiene & Safety (0-25 pts)',
+                    'Pillar 2: Structure & Cleanliness (0-25 pts)',
+                    'Pillar 3: Confidence in Management (0-30 pts) — MOST CRITICAL',
+                    'Lower points = better rating (points are penalties)',
+                    'Total possible: 80 points'
+                ],
+                example: 'A spotless kitchen with no documentation = low confidence in management = poor rating.',
+                mnemonic: '601 = Leche + Té: Tomas té con leche mientras estudias los 3 pilares.'
+            },
+            {
+                id: 602,
+                topic: 'EHO Fundamentals',
+                title: 'FHRS Rating System',
+                keyPoints: [
+                    '5★ = 0-15 points (Very Good)',
+                    '4★ = 16-20 points (Good)',
+                    '3★ = 21-30 points (Generally Satisfactory)',
+                    '2★ = 31-40 points (Improvement Necessary)',
+                    '1★ = 41-50 points (Major Improvement Necessary)',
+                    '0★ = 50+ points (Urgent Improvement Necessary)'
+                ],
+                example: '18 points = 4★. 28 points = 3★. 55 points = 0★.',
+                mnemonic: '602 = Leche + Noé: Noé llena su arca con leche de 5 estrellas.'
+            },
+            {
+                id: 603,
+                topic: 'EHO Fundamentals',
+                title: 'Confidence in Management (0-30 pts)',
+                keyPoints: [
+                    'THE most important pillar — 30 out of 80 points',
+                    'Inspector assesses from the VERY FIRST SECOND',
+                    'Your attitude, documented systems, trained staff',
+                    'You must know your FSMS inside out',
+                    'Compliance history matters'
+                ],
+                example: 'Inspector sees order, calm staff, organised documents = high confidence = better rating.',
+                mnemonic: '603 = Leche + Mayo: Mayo de leche para la confianza del inspector.'
+            },
+            {
+                id: 604,
+                topic: 'EHO Fundamentals',
+                title: 'First Impressions (First 5 Seconds)',
+                keyPoints: [
+                    'Clean, tidy entrance',
+                    'Staff wearing proper uniform/PPE',
+                    'No unpleasant odours',
+                    'No evidence of pests',
+                    'You look calm and professional'
+                ],
+                example: 'Dirty entrance = 5 seconds of bad impression = difficult to recover during inspection.',
+                mnemonic: '604 = Leche + Rayo: Un rayo de leche ilumina la primera impresión.'
+            },
+            {
+                id: 605,
+                topic: 'EHO Fundamentals',
+                title: 'How to React When Inspector Arrives',
+                keyPoints: [
+                    'DO NOT panic — take a deep breath',
+                    'Be courteous and professional',
+                    'Know where ALL documents are kept',
+                    'Don\'t rush to grab paperwork',
+                    'Invite the inspector to look around'
+                ],
+                example: 'Inspector: "Hello, I\'m from Environmental Health." You: "Welcome, what would you like to see first?"',
+                mnemonic: '605 = Leche + Ley: La ley de la leche es mantener la calma.'
+            },
+            {
+                id: 606,
+                topic: 'EHO Fundamentals',
+                title: 'Critical Documentation',
+                keyPoints: [
+                    'FSMS (Food Safety Management System) — your master document',
+                    'Daily temperature records (fridge, cooking, hot holding)',
+                    'Cleaning schedule with signed-off logs',
+                    'Supplier records and delivery checks',
+                    'Staff training records and certificates'
+                ],
+                example: 'No temperature logs = major penalty. Organised folder with all records = inspector confidence.',
+                mnemonic: '606 = Leche + Joya: Una joya de leche guarda todos los documentos importantes.'
+            },
+            {
+                id: 607,
+                topic: 'EHO Fundamentals',
+                title: 'Staff Knowledge',
+                keyPoints: [
+                    'Staff must be able to explain food safety procedures',
+                    'Staff must know which allergens are in each dish',
+                    'Staff must know correct temperatures (8°C, 63°C, 75°C)',
+                    'Staff must know emergency procedure for allergic reactions',
+                    'All training must be documented and up to date'
+                ],
+                example: 'Inspector asks the commis chef: "What allergens are in this pasta?" If they don\'t know = problem.',
+                mnemonic: '607 = Leche + Kia: Un Kia de leche lleno de conocimiento para cada cocinero.'
+            },
+            {
+                id: 608,
+                topic: 'EHO Fundamentals',
+                title: 'Document It AND Follow It',
+                keyPoints: [
+                    'You must DOCUMENT everything: cleaning, temps, procedures',
+                    'You must FOLLOW what you documented — every single day',
+                    'Inspector will spot discrepancies immediately',
+                    'If you say you clean daily but records show only Monday = fail',
+                    'If you document procedures but don\'t follow them = even worse'
+                ],
+                example: 'Cleaning schedule says Mon-Wed-Fri, but log only shows Monday entries = non-compliance.',
+                mnemonic: '608 = Leche + Foca: Una foca de leche documenta y sigue el sistema cada día.'
+            },
+            {
+                id: 609,
+                topic: 'EHO Fundamentals',
+                title: 'After the Inspection',
+                keyPoints: [
+                    'You will receive the report within 48 hours',
+                    'If there are non-conformities, you have 10 days to respond',
+                    'Your rating is published online (FHRS / Scores on the Doors)',
+                    'You can appeal if you disagree with the rating',
+                    'Serious issues may trigger a re-inspection'
+                ],
+                example: 'Rating of 2★ published online = customers see it. You have 10 days to demonstrate corrections.',
+                mnemonic: '609 = Leche + Pipa: Una pipa de leche lleva el reporte final del EHO.'
+            },
+            {
+                id: 610,
+                topic: 'Critical Temperatures',
+                title: 'Fridge Temperature',
+                keyPoints: [
+                    'LEGAL MAXIMUM: 8°C',
+                    'BEST PRACTICE: 1-5°C',
+                    'Check temperature daily',
+                    'Thermometer must be visible in fridge',
+                    'If it rises to 9°C = potential food safety issue'
+                ],
+                example: 'Thermometer reads 7°C at 9 AM: fine. At 3 PM it reads 10°C: investigate immediately.',
+                mnemonic: '610 = Leche + Tasa: Una tasa medidora llena de leche fría a 5°C.'
+            },
+            {
+                id: 611,
+                topic: 'Critical Temperatures',
+                title: 'Hot Holding Temperature',
+                keyPoints: [
+                    'MINIMUM: 63°C',
+                    'Food served hot must stay at 63°C or above',
+                    'Use probe thermometer to verify',
+                    'Check regularly during service',
+                    'If drops to 62°C = risk, reheat or discard'
+                ],
+                example: 'Stew at 65°C at 12:30 PM. At 1:45 PM it\'s 61°C = needs reheating above 63°C.',
+                mnemonic: '611 = Leche + Teta: Leche caliente a 63°C en el biberón.'
+            },
+            {
+                id: 612,
+                topic: 'Critical Temperatures',
+                title: 'Cooking Temperature',
+                keyPoints: [
+                    'Core temperature MINIMUM 75°C',
+                    'Poultry: ALWAYS 75°C (no exceptions)',
+                    'Fish: 63°C is acceptable',
+                    'Measure in the thickest part',
+                    'Hold for at least 2 minutes'
+                ],
+                example: 'Pan-fried chicken: insert probe into thickest part, must read 75°C minimum.',
+                mnemonic: '612 = Leche + Tina: Una tina de leche hirviendo a 75°C.'
+            },
+            {
+                id: 613,
+                topic: 'Critical Temperatures',
+                title: 'The Danger Zone (8-63°C)',
+                keyPoints: [
+                    'Between 8°C and 63°C = DANGER ZONE',
+                    'Bacteria multiply rapidly here',
+                    'Food can be in danger zone for MAXIMUM 2 hours',
+                    'After 2 hours = DISCARD immediately',
+                    'After 1-2 hours = for immediate consumption only'
+                ],
+                example: 'Soup removed from heat at 12:00 at 62°C. At 2:15 PM still in danger zone = discard.',
+                mnemonic: '613 = Leche + Nemo: Nemo nada en leche peligrosa entre 8-63°C.'
+            },
+            {
+                id: 614,
+                topic: 'Critical Temperatures',
+                title: 'Probe Calibration',
+                keyPoints: [
+                    'Test probe in ice water (should read 0°C)',
+                    'Test probe in boiling water (should read 100°C)',
+                    'Do this regularly (weekly minimum)',
+                    'Record all calibrations',
+                    'If probe doesn\'t calibrate = replace immediately'
+                ],
+                example: 'Ice water reads 0-2°C: good. Boiling water reads 98-100°C: good. If not = faulty probe.',
+                mnemonic: '614 = Leche + Toro: Un toro salpicado de leche calibra termómetros.'
+            },
+            {
+                id: 615,
+                topic: 'Critical Temperatures',
+                title: 'Probe Cleaning',
+                keyPoints: [
+                    'Clean between EVERY use with antibacterial wipe',
+                    'Don\'t cross-contaminate measurements',
+                    'If you measure raw chicken, clean before measuring cooked food',
+                    'Store probe clean and protected',
+                    'Replace if visibly damaged'
+                ],
+                example: 'Measure raw chicken (40°C), clean probe, then measure cooked chicken (75°C).',
+                mnemonic: '615 = Leche + Lata: Una lata de leche limpia la sonda.'
+            },
+            {
+                id: 616,
+                topic: 'Critical Temperatures',
+                title: 'Temperature Records',
+                keyPoints: [
+                    'Record fridge temperature DAILY',
+                    'Record hot food temperatures',
+                    'Record cooking core temperatures',
+                    'Include time and who checked',
+                    'Keep records minimum 3 months (best practice: 12 months)'
+                ],
+                example: '15/03/2026 - Fridge: 4°C - 09:00 - Juan. Chicken: 76°C - 13:00 - Maria.',
+                mnemonic: '616 = Leche + Jaula: Una jaula de registros de leche en temperatura.'
+            },
+            {
+                id: 617,
+                topic: 'Critical Temperatures',
+                title: 'The 2-Hour Rule',
+                keyPoints: [
+                    'Food outside temperature control: maximum 2 hours',
+                    '0-2 hours = still safe if returned to heat/cold',
+                    'Over 2 hours = DISCARD (no matter how fresh it looks)',
+                    'This is one of the most common mistakes',
+                    'Use a visible timer or clock'
+                ],
+                example: 'Steak taken out at 1:45 PM. At 3:45 PM still out = must discard.',
+                mnemonic: '617 = Leche + Kia: Un Kia de leche con reloj de 2 horas.'
+            },
+            {
+                id: 618,
+                topic: 'Critical Temperatures',
+                title: 'Rapid Cooling of Hot Food',
+                keyPoints: [
+                    'Hot food must be cooled rapidly',
+                    'Use ice bath or ice blocks in container',
+                    'Cool from 63°C to 21°C within maximum 2 hours',
+                    'Then refrigerate to reach 5°C',
+                    'Stir occasionally for even cooling'
+                ],
+                example: 'Hot stock in ice bath cools in 90 minutes, then straight to fridge.',
+                mnemonic: '618 = Leche + Hacha: Un hacha de hielo dentro de leche caliente la enfría.'
+            },
+            {
+                id: 619,
+                topic: 'Critical Temperatures',
+                title: 'Safe Defrosting',
+                keyPoints: [
+                    'Defrost in fridge (slowly, 24-48 hours)',
+                    'NEVER defrost at room temperature',
+                    'NEVER defrost under hot water',
+                    'Cold running water acceptable if changed every 30 minutes',
+                    'Once defrosted, cook within 24 hours'
+                ],
+                example: 'Frozen chicken placed in fridge Monday 8 AM = defrosted by Wednesday.',
+                mnemonic: '619 = Leche + Pipa: Una pipa lenta de agua descongela la leche helada.'
+            },
+            {
+                id: 620,
+                topic: 'The 14 Allergens',
+                title: '1. Celery',
+                keyPoints: [
+                    'Fresh celery, celeriac',
+                    'Celery salt, celery powder',
+                    'Found in stocks, soups, some seasonings',
+                    'Bouillon, consommé, Bloody Mary mix',
+                    'Must declare "CONTAINS CELERY" on menu'
+                ],
+                example: 'Consommé made with celeriac = declare. Celery salt on chicken = declare.',
+                image: 'images/optimized/chunk_620_celery.webp',
+                mnemonic: '🎬 620 = Leche + Nasa: Un cohete de la NASA hecho de leche sólida DESPEGA desde un campo de APIOS gigantes, sus motores alimentados por CALDO (stock) hirviente que deja una estela de cubos de BOUILLON dorados cayendo por el aire. En la nariz del cohete va atado un CELERIAC gordo con gafas de piloto. Al impactar la atmósfera, EXPLOTA en una nube de CELERY POWDER verde y CELERY SALT blanca que llueve sobre la ciudad, cubriendo enormes cuencos de SOPA humeante y CONSOMMÉ cristalino en cada tejado. Un vaso gigante de BLOODY MARY neón en el edificio más alto atrapa la sal, su palo de apio girando como helicóptero. En el cielo, un cartel rojo del tamaño de una autopista dice "CONTAINS CELERY" — la declaración del MENÚ — mientras diminutos botes de CONDIMENTOS (seasonings) descienden en paracaídas marcados ALLERGEN en rojo.'
+            },
+            {
+                id: 621,
+                topic: 'The 14 Allergens',
+                title: '2. Cereals Containing Gluten',
+                keyPoints: [
+                    'Wheat, barley, rye, oats, spelt, kamut',
+                    'Bread, pasta, flour, biscuits, pastry',
+                    'Soy sauce (contains wheat)',
+                    'Beer (barley), some sausages',
+                    'Many condiments and spice mixes'
+                ],
+                example: 'Fresh pasta = gluten. Soy sauce = gluten. Breadcrumbs on fish = gluten.',
+                image: 'images/optimized/chunk_621_cereals.webp',
+                mnemonic: '621 = Leche + Nata: Nata de leche con trigo y cebada.'
+            },
+            {
+                id: 622,
+                topic: 'The 14 Allergens',
+                title: '3. Crustaceans',
+                keyPoints: [
+                    'Prawns, crab, lobster, crayfish, langoustine',
+                    'Shrimp paste, crab sticks',
+                    'Bisque, fish stock (check)',
+                    'Thai curry paste (often contains shrimp)',
+                    'Risk of cross-contamination in fish prep area'
+                ],
+                example: 'Prawn cocktail = allergen. Thai green curry paste = check for shrimp.',
+                image: 'images/optimized/chunk_622_crustaceans.webp',
+                mnemonic: '622 = Leche + Nana: Una nana de leche con gambas gigantes.'
+            },
+            {
+                id: 623,
+                topic: 'The 14 Allergens',
+                title: '4. Eggs',
+                keyPoints: [
+                    'Chicken eggs, duck eggs, any bird eggs',
+                    'Mayonnaise, hollandaise, pasta',
+                    'Cakes, meringue, quiche, batter',
+                    'Some sausages and processed meats',
+                    'Egg wash on pastry'
+                ],
+                example: 'Carbonara = eggs. Mayo = eggs. Fresh pasta = eggs. Scotch egg = eggs.',
+                image: 'images/optimized/chunk_623_eggs.webp',
+                mnemonic: '623 = Leche + Nemo: Nemo rompe huevos en leche blanca.'
+            },
+            {
+                id: 624,
+                topic: 'The 14 Allergens',
+                title: '5. Fish',
+                keyPoints: [
+                    'All fish: salmon, cod, trout, haddock, etc.',
+                    'Anchovies, anchovy paste',
+                    'Worcestershire sauce (contains anchovies)',
+                    'Fish sauce (common in Asian cooking)',
+                    'Caesar salad dressing'
+                ],
+                example: 'Fish and chips = allergen. Worcestershire sauce on steak = allergen (anchovies).',
+                image: 'images/optimized/chunk_624_fish.webp',
+                mnemonic: '624 = Leche + Noria: Una noria de pescados nada en leche.'
+            },
+            {
+                id: 625,
+                topic: 'The 14 Allergens',
+                title: '6. Lupin',
+                keyPoints: [
+                    'Lupin is a legume, small seeds',
+                    'Lupin flour (in some gluten-free products)',
+                    'Some breads, biscuits, pastries',
+                    'Not very common but on the list',
+                    'Check imported gluten-free products'
+                ],
+                example: 'Gluten-free bread may contain lupin flour. Always check the label.',
+                image: 'images/optimized/chunk_625_lupin.webp',
+                mnemonic: '625 = Leche + Nilo: Semillas de altramuz flotan en el Nilo de leche.'
+            },
+            {
+                id: 626,
+                topic: 'The 14 Allergens',
+                title: '7. Milk (Dairy)',
+                keyPoints: [
+                    'Milk, yoghurt, cheese, butter, cream',
+                    'Ghee, buttermilk, whey',
+                    'Lactose as additive',
+                    'Some medications and supplements',
+                    'Very common in European cooking'
+                ],
+                example: 'Béchamel sauce = dairy. Mashed potato with butter = dairy. Ice cream = dairy.',
+                image: 'images/optimized/chunk_626_milk.webp',
+                mnemonic: '626 = Leche + Anejo: Queso añejo bañado en leche de leche.'
+            },
+            {
+                id: 627,
+                topic: 'The 14 Allergens',
+                title: '8. Molluscs',
+                keyPoints: [
+                    'Mussels, oysters, clams, squid, octopus, snails',
+                    'Oyster sauce (Chinese cooking)',
+                    'Paella, seafood risotto',
+                    'Cross-contamination in fish kitchen',
+                    'Different from crustaceans (shells vs tentacles)'
+                ],
+                example: 'Moules marinière = allergen. Squid rings = allergen. Oyster sauce in stir-fry = allergen.',
+                image: 'images/optimized/chunk_627_molluscs.webp',
+                mnemonic: '627 = Leche + Inca: Un inca de leche cocina moluscos ancestrales.'
+            },
+            {
+                id: 628,
+                topic: 'The 14 Allergens',
+                title: '9. Mustard',
+                keyPoints: [
+                    'Yellow mustard, wholegrain, Dijon',
+                    'Mustard powder, seeds, leaves, oil',
+                    'Marinades, dressings, sauces',
+                    'Piccalilli, some curry powders',
+                    'Cumberland sauce'
+                ],
+                example: 'Honey mustard dressing = allergen. English mustard on roast beef = allergen.',
+                image: 'images/optimized/chunk_628_mustard.webp',
+                mnemonic: '628 = Leche + Nicho: Un nicho de mostaza amarilla en leche.'
+            },
+            {
+                id: 629,
+                topic: 'The 14 Allergens',
+                title: '10. Peanuts',
+                keyPoints: [
+                    'Peanuts, groundnuts',
+                    'Peanut butter, groundnut oil',
+                    'Peanut flour (in some desserts)',
+                    'Satay sauce',
+                    'HIGH RISK of severe allergic reaction',
+                    'NOT a tree nut (it\'s a legume)'
+                ],
+                example: 'Satay chicken = peanuts. Peanut oil = allergen. Thai dishes = check carefully.',
+                image: 'images/optimized/chunk_629_peanuts.webp',
+                mnemonic: '629 = Leche + Naipe: Un naipe de cacahuetes flota en leche marrón.'
+            },
+            {
+                id: 630,
+                topic: 'The 14 Allergens',
+                title: '11. Sesame',
+                keyPoints: [
+                    'Sesame seeds, sesame oil',
+                    'Tahini (sesame paste)',
+                    'Hummus (often contains tahini)',
+                    'Some breads, bagels, burger buns',
+                    'Halva, some Asian sauces'
+                ],
+                example: 'Sesame seed bun = allergen. Hummus = allergen (tahini). Stir-fry with sesame oil = allergen.',
+                image: 'images/optimized/chunk_630_sesame.webp',
+                mnemonic: '630 = Leche + Masa: Masa de pan con sésamo en leche blanca.'
+            },
+            {
+                id: 631,
+                topic: 'The 14 Allergens',
+                title: '12. Soybeans (Soya)',
+                keyPoints: [
+                    'Soya beans, tofu, edamame',
+                    'Soy sauce, miso, tempeh',
+                    'Soya oil, soya lecithin',
+                    'Very common in Asian cooking',
+                    'Some chocolate and processed foods'
+                ],
+                example: 'Soy sauce on rice = allergen. Tofu stir-fry = allergen. Miso soup = allergen.',
+                image: 'images/optimized/chunk_631_soybeans.webp',
+                mnemonic: '631 = Leche + Mata: Una mata de soja crece en leche cremosa.'
+            },
+            {
+                id: 632,
+                topic: 'The 14 Allergens',
+                title: '13. Sulphur Dioxide & Sulphites (>10ppm)',
+                keyPoints: [
+                    'Used as preservative in wine, cider',
+                    'Dried fruit (raisins, apricots, dates)',
+                    'Some processed meats, sausages',
+                    'Threshold: 10 parts per million (ppm)',
+                    'Can trigger reactions in asthmatics'
+                ],
+                example: 'White wine = sulphites. Dried apricots = sulphites. Cured ham = check.',
+                image: 'images/optimized/chunk_632_sulphites.webp',
+                mnemonic: '632 = Leche + Maná: Maná de frutas secas con SO2 en leche.'
+            },
+            {
+                id: 633,
+                topic: 'The 14 Allergens',
+                title: '14. Tree Nuts',
+                keyPoints: [
+                    'Almonds, hazelnuts, walnuts, cashews',
+                    'Pecans, pistachios, macadamia, brazil nuts',
+                    'Nut butters, nut oils, nut flour',
+                    'Marzipan (almonds), praline, nougat',
+                    'HIGH RISK of severe reaction',
+                    'Cross-contamination very common in kitchens'
+                ],
+                example: 'Almond cake = tree nuts. Walnut salad = tree nuts. Pesto (pine nuts) = check.',
+                image: 'images/optimized/chunk_633_treenuts.webp',
+                mnemonic: '633 = Leche + Mamá: Mamá mezcla frutos secos mojados en leche.'
+            },
+            {
+                id: 634,
+                topic: 'The 14 Allergens',
+                title: 'Allergen Management & Natasha\'s Law',
+                keyPoints: [
+                    'Create allergen matrix: dishes in rows, 14 allergens in columns',
+                    'Mark which dish contains which allergen',
+                    'Update whenever recipe changes',
+                    'Natasha\'s Law (Oct 2021): full labelling on PPDS food',
+                    'PPDS = Pre-Packed for Direct Sale',
+                    'Staff MUST know where to find allergen info',
+                    'Emergency: call 999, check for EpiPen, don\'t move person, preserve food sample'
+                ],
+                example: 'Pasta carbonara: Eggs ✓, Dairy ✓, Gluten ✓. Green salad: none.',
+                image: null,
+                mnemonic: '634 = Leche + Mar: Un mar de leche con la matriz de alérgenos.'
+            },
+            {
+                id: 635,
+                topic: 'Colour-Coded Boards',
+                title: 'RED Board — Raw Meat & Poultry',
+                keyPoints: [
+                    'Raw beef, pork, lamb, venison',
+                    'Raw chicken, turkey, duck',
+                    'Risk: Salmonella, E.coli, Campylobacter',
+                    'Always store BELOW ready-to-eat food in fridge',
+                    'Never place near cooked/RTE food'
+                ],
+                example: 'Raw chicken on red board. Store in bottom compartment, separate from fruit.',
+                mnemonic: '635 = Leche + Mula: Una mula roja carga carne cruda en leche.'
+            },
+            {
+                id: 636,
+                topic: 'Colour-Coded Boards',
+                title: 'BLUE Board — Raw Fish & Shellfish',
+                keyPoints: [
+                    'Raw salmon, cod, trout, haddock',
+                    'Raw prawns, crab, mussels',
+                    'Risk: Listeria, Vibrio, Anisakis',
+                    'Store below RTE food in fridge',
+                    'Separate from raw meat'
+                ],
+                example: 'Raw salmon on blue board. Store below cooked fish, above raw chicken.',
+                mnemonic: '636 = Leche + Mago: Un mago azul hace aparecer pescado en leche.'
+            },
+            {
+                id: 637,
+                topic: 'Colour-Coded Boards',
+                title: 'YELLOW Board — Cooked Meat',
+                keyPoints: [
+                    'Roast chicken, ham, cooked sausages',
+                    'Sliced deli meats, pâté',
+                    'Low risk but can recontaminate',
+                    'Store ABOVE raw items in fridge',
+                    'Use only for cooked meat products'
+                ],
+                example: 'Sliced roast beef on yellow board. Store above raw meat in fridge.',
+                mnemonic: '637 = Leche + Mico: Un mico amarillo salta sobre carnes cocidas en leche.'
+            },
+            {
+                id: 638,
+                topic: 'Colour-Coded Boards',
+                title: 'GREEN Board — Fruit, Salad & Vegetables',
+                keyPoints: [
+                    'Fresh fruit: apples, oranges, berries',
+                    'Salad items: lettuce, tomato, cucumber',
+                    'Fresh herbs: parsley, basil, coriander',
+                    'Low risk if properly washed',
+                    'ALWAYS wash before use'
+                ],
+                example: 'Lettuce on green board. Wash all salad items before preparation.',
+                mnemonic: '638 = Leche + Mafia: La mafia verde protege frutas en leche.'
+            },
+            {
+                id: 639,
+                topic: 'Colour-Coded Boards',
+                title: 'BROWN Board — Root Vegetables',
+                keyPoints: [
+                    'Potatoes, carrots, turnips, parsnips',
+                    'Onions, garlic, ginger, beetroot',
+                    'Need washing or peeling',
+                    'Low risk if cooked',
+                    'Keep separate from other veg'
+                ],
+                example: 'Raw potatoes on brown board. Peel carrots before cooking.',
+                mnemonic: '639 = Leche + Mapa: Un mapa marrón de tubérculos en leche.'
+            },
+            {
+                id: 640,
+                topic: 'Colour-Coded Boards',
+                title: 'WHITE Board — Bakery & Dairy',
+                keyPoints: [
+                    'Fresh bread, pastries, scones',
+                    'Cheese, butter, cream',
+                    'Low risk if fresh',
+                    'Keep away from raw food',
+                    'Watch use-by dates'
+                ],
+                example: 'Slicing bread on white board. Cutting cheese on white board.',
+                mnemonic: '640 = Leche + Rosa: Una rosa blanca flota sobre pan en leche.'
+            },
+            {
+                id: 641,
+                topic: 'Colour-Coded Boards',
+                title: 'PURPLE Board — Free-From / Allergen-Free',
+                keyPoints: [
+                    'Gluten-free bread, pasta, flour',
+                    'Dairy-free alternatives',
+                    'Vegan dishes',
+                    'CRITICAL: prevent cross-contamination with allergens',
+                    'Store separately if possible'
+                ],
+                example: 'Gluten-free pasta on purple board. NEVER use same board as regular flour.',
+                mnemonic: '641 = Leche + Rata: Una rata púrpura protege comida sin alérgenos en leche.'
+            },
+            {
+                id: 642,
+                topic: 'Colour-Coded Boards',
+                title: 'Fridge Order (CRITICAL)',
+                keyPoints: [
+                    'TOP: Ready-to-eat food (salads, desserts, sandwiches)',
+                    'UPPER-MIDDLE: Cooked meats',
+                    'LOWER-MIDDLE: Raw fish',
+                    'BOTTOM: Raw meat & poultry',
+                    'SEPARATE: Dairy, vegetables',
+                    'Rule: RAW always BELOW ready-to-eat'
+                ],
+                example: 'Never put raw chicken above salad. Always raw at bottom, RTE at top.',
+                mnemonic: '642 = Leche + Rana: Una rana organiza la nevera de leche de arriba a abajo.'
+            },
+            {
+                id: 643,
+                topic: 'Colour-Coded Boards',
+                title: 'Clean Between Uses (CRITICAL)',
+                keyPoints: [
+                    'Clean board IMMEDIATELY after raw meat use',
+                    'Hot soapy water + food-safe sanitiser',
+                    'Or use a different board for next ingredient',
+                    'If you don\'t clean: Salmonella transfers to next food',
+                    'Inspector will check boards for cleanliness = instant penalty if dirty'
+                ],
+                example: 'Use red board for raw chicken. Wash thoroughly. Then use green board for salad.',
+                mnemonic: '643 = Leche + Rama: Una rama limpia lava la tabla después de carne con leche.'
+            },
+            {
+                id: 644,
+                topic: 'Colour-Coded Boards',
+                title: 'Handwashing Between Tasks',
+                keyPoints: [
+                    'After handling raw meat or fish',
+                    'After using the toilet',
+                    'After touching bins or waste',
+                    'After sneezing, coughing, or touching face',
+                    'Before handling ready-to-eat food',
+                    'After handling money or phones',
+                    '20 seconds minimum with soap, rinse, dry with disposable towel'
+                ],
+                example: 'Prep raw chicken, wash hands 20 seconds with soap, then prep salad.',
+                mnemonic: '644 = Leche + Arar: Arar las manos con jabón en leche blanca.'
+            }
+        ];
+
+        const quizQuestions = [
+            { question: 'What is the maximum legal fridge temperature?', options: ['8°C', '10°C', '5°C', '12°C'], correct: 0 },
+            { question: 'How long can food be left in the danger zone?', options: ['1 hour', 'Maximum 2 hours', '30 minutes', '4 hours'], correct: 1 },
+            { question: 'What is the minimum core cooking temperature for poultry?', options: ['65°C', '70°C', '75°C', '80°C'], correct: 2 },
+            { question: 'Which colour chopping board is for raw meat?', options: ['Blue', 'Green', 'Red', 'Yellow'], correct: 2 },
+            { question: 'How long should you wash your hands?', options: ['10 seconds', 'Minimum 20 seconds', '5 seconds', '30 seconds'], correct: 1 },
+            { question: 'What does FSMS stand for?', options: ['Food Safety Minimum Standards', 'Food Safety Management System', 'Food Service Management System', 'Food Staff Management System'], correct: 1 },
+            { question: 'How many allergens must be declared in the UK?', options: ['7', '10', '14', '20'], correct: 2 },
+            { question: 'What colour board is for raw fish?', options: ['Red', 'Blue', 'Yellow', 'Green'], correct: 1 },
+            { question: 'What colour board is for cooked meat?', options: ['Red', 'Yellow', 'Blue', 'Green'], correct: 1 },
+            { question: 'What is the hot holding minimum temperature?', options: ['55°C', '60°C', '63°C', '70°C'], correct: 2 },
+            { question: 'What does HACCP stand for?', options: ['Hazard Analysis Critical Control Points', 'Health And Care Control Procedures', 'Hygiene And Critical Cooking Points', 'Hazard Assessment and Control Protocol'], correct: 0 },
+            { question: 'What is the danger zone temperature range?', options: ['0-8°C', '8-63°C', '10-60°C', '5-75°C'], correct: 1 },
+            { question: 'How often should probes be calibrated?', options: ['Monthly', 'Quarterly', 'At least weekly', 'Annually'], correct: 2 },
+            { question: 'What does PPDS stand for?', options: ['Pre-Packed for Direct Sale', 'Pre-Prepared Dishes and Snacks', 'Pre-Portioned Direct Service', 'Pre-Packed Processed Dishes'], correct: 0 },
+            { question: 'Which pillar has the most points in FHRS scoring?', options: ['Food Hygiene (25 pts)', 'Structure & Cleanliness (25 pts)', 'Confidence in Management (30 pts)', 'They are all equal'], correct: 2 },
+            { question: 'Where should raw meat be stored in the fridge?', options: ['Top shelf', 'Middle shelf', 'Bottom shelf', 'Door shelves'], correct: 2 },
+            { question: 'What year was Natasha\'s Law introduced?', options: ['2019', '2020', '2021', '2022'], correct: 2 },
+            { question: 'What temperature should you test probe in ice water?', options: ['0°C', '5°C', '10°C', '15°C'], correct: 0 },
+            { question: 'How long should temperature records be kept?', options: ['1 month', 'Minimum 3 months', '6 months', 'Minimum 12 months'], correct: 1 },
+            { question: 'What is the purple chopping board used for?', options: ['Raw meat', 'Cooked meat', 'Free-from / allergen-free foods', 'Vegetables'], correct: 2 }
+        ];
+
+        const drillScenarios = [
+            {
+                scenario: 'The inspector arrives at 2:30 PM unannounced. What is your immediate response?',
+                modelAnswer: 'Stay calm and professional. Take a deep breath. Greet the inspector courteously: "Welcome, I\'m the manager. How can I help you today?" Know where all your documentation is kept. Be ready to show your food safety systems.'
+            },
+            {
+                scenario: 'Inspector checks your fridge and finds the temperature is 9°C. What do you do?',
+                modelAnswer: 'Acknowledge the issue calmly. Explain your daily temperature checking procedure. Show your temperature logs to prove you normally monitor it. Investigate the cause (door left open? thermostat issue?). Explain corrective action: reset thermostat, ensure it drops back to 1-5°C within an hour.'
+            },
+            {
+                scenario: 'Inspector points at a pasta carbonara dish and asks: "What allergens are in this?"',
+                modelAnswer: 'Immediately identify: Eggs, Dairy (cheese, cream), Gluten (pasta). Show your allergen matrix. Have it posted or easily accessible. Explain how you train staff and document allergen information. Be confident and thorough.'
+            },
+            {
+                scenario: 'Inspector asks to see your Food Safety Management System documentation. Where do you take them?',
+                modelAnswer: 'Calmly retrieve your HACCP folder or Food Safety by Brand folder. Walk the inspector through your key control points: cold storage temperatures, cooking temperatures, hand hygiene procedures, cleaning schedules, allergen management, pest control records. Be organised and methodical.'
+            },
+            {
+                scenario: 'Inspector: "When did you last calibrate this temperature probe?" You check and find the log is 3 months old.',
+                modelAnswer: 'Be honest. Say: "I see the last calibration was 3 months ago. That\'s overdue. I should be doing this weekly. I will calibrate it immediately today and establish a weekly routine." Offer to demonstrate calibration in ice water and boiling water. Show commitment to improvement.'
+            },
+            {
+                scenario: 'Inspector asks: "What would you do if food was left out of temperature control for 3 hours?"',
+                modelAnswer: 'Be clear and decisive: "I would discard it immediately. The 2-hour rule is maximum—after 2 hours in the danger zone, food is unsafe regardless of how it looks or smells. No exceptions. I prioritise food safety over waste."'
+            },
+            {
+                scenario: 'Inspector notices raw chicken is stored on the same shelf as ready-to-eat salad in your fridge.',
+                modelAnswer: 'Acknowledge the error immediately. Move the raw chicken to the bottom shelf right away. Explain: "Raw meat must always be below ready-to-eat food to prevent cross-contamination. I apologise for this oversight and will ensure my team knows the proper fridge order."'
+            },
+            {
+                scenario: 'Inspector asks to see your cleaning schedule and verification records. You can\'t find them immediately.',
+                modelAnswer: 'Remain calm. Explain where you keep records (e.g., by the entrance, in the office). Retrieve them quickly. Walk through the daily, weekly, and monthly tasks. Show evidence of completion (ticks, initials, dates). If records are missing, acknowledge and commit to implementing a system.'
+            }
+        ];
+
+        const reviewFlashcards = [
+            { front: 'Max fridge temperature (legal)?', back: '8°C (best practice: 1-5°C)' },
+            { front: 'Min hot holding temperature?', back: '63°C' },
+            { front: 'Min cooking temperature for poultry?', back: '75°C' },
+            { front: 'Danger zone temperature range?', back: '8-63°C' },
+            { front: '2-hour rule?', back: 'Max 2 hrs out of temp control, then discard' },
+            { front: 'Red board use?', back: 'Raw meat & poultry' },
+            { front: 'Blue board use?', back: 'Raw fish & shellfish' },
+            { front: 'Yellow board use?', back: 'Cooked meat' },
+            { front: 'Green board use?', back: 'Fruit, salad & vegetables' },
+            { front: 'Purple board use?', back: 'Free-from / allergen-free foods' },
+            { front: 'Handwashing time?', back: '20 seconds minimum with soap' },
+            { front: 'Probe calibration frequency?', back: 'Weekly minimum' },
+            { front: 'HACCP meaning?', back: 'Hazard Analysis Critical Control Points' },
+            { front: 'Number of UK allergens?', back: '14' },
+            { front: 'Most important FHRS pillar?', back: 'Confidence in Management (30 pts)' }
+        ];
+
+        const redFlags = [
+            'Dirty entrance area',
+            'Staff without proper uniforms/PPE',
+            'Unpleasant odours (rubbish, mould, burnt oil)',
+            'Evidence of pests (droppings, cobwebs)',
+            'Disorganised, cluttered kitchen',
+            'Staff not washing hands when entering kitchen',
+            'No visible cleaning schedule posted',
+            'Fridge doors left open frequently',
+            'Food uncovered or unlabelled',
+            'Dirty chopping boards or work surfaces'
+        ];
+
+        // ============================================
+        // STATE MANAGEMENT + PERSISTENCE
+        // ============================================
+
+        function loadState() {
+            try {
+                const saved = JSON.parse(localStorage.getItem('eho_master_state') || '{}');
+                return {
+                    currentTopic: saved.currentTopic || 'EHO Fundamentals',
+                    currentChunkIndex: saved.currentChunkIndex || 0,
+                    quizScore: saved.quizScore || 0,
+                    quizBestScore: saved.quizBestScore || 0,
+                    quizStreak: saved.quizStreak || 0,
+                    quizQuestionIndex: saved.quizQuestionIndex || 0,
+                    quizAnswered: false,
+                    quizSelectedOption: null,
+                    quizCompleted: false,
+                    drillScenarioIndex: saved.drillScenarioIndex || 0,
+                    drillAnswered: false,
+                    reviewCardIndex: saved.reviewCardIndex || 0,
+                    reviewFlipped: false,
+                    redFlagsChecked: new Set(saved.redFlagsChecked || [])
+                };
+            } catch { return defaultState(); }
+        }
+
+        function defaultState() {
+            return {
+                currentTopic: 'EHO Fundamentals', currentChunkIndex: 0,
+                quizScore: 0, quizBestScore: 0, quizStreak: 0, quizQuestionIndex: 0,
+                quizAnswered: false, quizSelectedOption: null, quizCompleted: false,
+                drillScenarioIndex: 0, drillAnswered: false,
+                reviewCardIndex: 0, reviewFlipped: false,
+                redFlagsChecked: new Set()
+            };
+        }
+
+        function saveState() {
+            try {
+                localStorage.setItem('eho_master_state', JSON.stringify({
+                    currentTopic: state.currentTopic,
+                    currentChunkIndex: state.currentChunkIndex,
+                    quizScore: state.quizScore,
+                    quizBestScore: state.quizBestScore,
+                    quizStreak: state.quizStreak,
+                    quizQuestionIndex: state.quizQuestionIndex,
+                    drillScenarioIndex: state.drillScenarioIndex,
+                    reviewCardIndex: state.reviewCardIndex,
+                    redFlagsChecked: [...state.redFlagsChecked]
+                }));
+            } catch {}
+        }
+
+        const state = loadState();
+
+        // ============================================
+        // INITIALIZATION
+        // ============================================
+
+        function init() {
+            renderTopicPills();
+            renderChunk();
+            renderQuizQuestion();
+            renderDrillScenario();
+            renderFlashcard();
+            renderRedFlags();
+            setupEventListeners();
+        }
+
+        // ============================================
+        // RENDER FUNCTIONS
+        // ============================================
+
+        function renderTopicPills() {
+            const container = document.getElementById('topic-pills-container');
+            const topics = [...new Set(chunks.map(c => c.topic))];
+            container.innerHTML = topics.map(topic =>
+                `<button class="topic-pill ${topic === state.currentTopic ? 'active' : ''}" data-topic="${topic}">${topic}</button>`
+            ).join('');
+        }
+
+        function renderChunk() {
+            const filteredChunks = chunks.filter(c => c.topic === state.currentTopic);
+            const chunk = filteredChunks[state.currentChunkIndex];
+
+            if (!chunk) return;
+
+            const progress = ((state.currentChunkIndex + 1) / filteredChunks.length) * 100;
+            document.getElementById('learn-progress').style.width = progress + '%';
+            document.getElementById('learn-counter').textContent = `${state.currentChunkIndex + 1} of ${filteredChunks.length}`;
+            document.getElementById('chunk-number').textContent = chunk.id;
+            document.getElementById('chunk-title').textContent = chunk.title;
+
+            let content = `
+                <div class="chunk-section">
+                    <h3>Key Points</h3>
+                    <ul>
+                        ${chunk.keyPoints.map(point => `<li>${point}</li>`).join('')}
+                    </ul>
+                </div>
+                <div class="chunk-example">
+                    <strong>Example:</strong> ${chunk.example}
+                </div>
+                ${chunk.image ? `<div class="chunk-image">
+                    <img src="${chunk.image}" alt="NexSpeak mnemonic image for chunk ${chunk.id}" />
+                </div>` : ''}
+            `;
+
+            document.getElementById('chunk-content').innerHTML = content;
+
+            document.getElementById('learn-prev-btn').disabled = state.currentChunkIndex === 0;
+            document.getElementById('learn-next-btn').disabled = state.currentChunkIndex === filteredChunks.length - 1;
+        }
+
+        function renderQuizQuestion() {
+            if (state.quizCompleted) {
+                renderQuizComplete();
+                return;
+            }
+            const question = quizQuestions[state.quizQuestionIndex];
+            document.getElementById('quiz-question-text').textContent = question.question;
+            document.getElementById('quiz-score-value').textContent = state.quizScore;
+            document.getElementById('quiz-streak').innerHTML = `Streak: ${state.quizStreak}${state.quizBestScore > 0 ? ` | Best: ${state.quizBestScore}/20` : ''}`;
+
+            const optionsContainer = document.getElementById('quiz-options');
+            optionsContainer.innerHTML = question.options.map((option, index) => `
+                <div class="quiz-option" data-index="${index}">${option}</div>
+            `).join('');
+
+            document.getElementById('quiz-feedback-container').innerHTML = '';
+            document.getElementById('quiz-next-btn').style.display = 'none';
+            state.quizAnswered = false;
+            state.quizSelectedOption = null;
+        }
+
+        function renderQuizComplete() {
+            if (state.quizScore > state.quizBestScore) {
+                state.quizBestScore = state.quizScore;
+            }
+            const pct = Math.round((state.quizScore / 20) * 100);
+            const emoji = pct >= 90 ? '🏆' : pct >= 70 ? '👏' : pct >= 50 ? '👍' : '📚';
+            document.getElementById('quiz-question-text').textContent = '';
+            document.getElementById('quiz-options').innerHTML = '';
+            document.getElementById('quiz-feedback-container').innerHTML = `
+                <div style="text-align:center; padding: 2rem 0;">
+                    <div style="font-size: 3rem;">${emoji}</div>
+                    <div style="font-size: 1.5rem; font-weight: 700; margin: 1rem 0; color: var(--dark-green);">Quiz Complete!</div>
+                    <div style="font-size: 1.25rem; margin-bottom: 0.5rem;">Score: <strong>${state.quizScore}/20</strong> (${pct}%)</div>
+                    <div style="font-size: 0.9rem; color: var(--mid-gray);">Best score: ${state.quizBestScore}/20</div>
+                </div>
+            `;
+            document.getElementById('quiz-next-btn').textContent = 'Restart Quiz';
+            document.getElementById('quiz-next-btn').style.display = 'block';
+            saveState();
+        }
+
+        function renderDrillScenario() {
+            const scenario = drillScenarios[state.drillScenarioIndex];
+            document.getElementById('drill-counter').textContent = `Scenario ${state.drillScenarioIndex + 1} of ${drillScenarios.length}`;
+            document.getElementById('scenario-text').textContent = scenario.scenario;
+            document.getElementById('scenario-response').value = '';
+            document.getElementById('model-answer').classList.remove('show');
+            document.getElementById('drill-next-btn').style.display = 'none';
+            state.drillAnswered = false;
+        }
+
+        function renderFlashcard() {
+            const card = reviewFlashcards[state.reviewCardIndex];
+            const content = state.reviewFlipped ? card.back : card.front;
+            const label = state.reviewFlipped ? 'Answer' : 'Question';
+
+            document.getElementById('flashcard-content').innerHTML = `
+                <div class="flashcard-label">${label}</div>
+                <div>${content}</div>
+            `;
+
+            document.getElementById('review-counter').textContent = `Card ${state.reviewCardIndex + 1} of ${reviewFlashcards.length}`;
+            document.getElementById('review-prev-btn').disabled = state.reviewCardIndex === 0;
+            document.getElementById('review-next-btn').disabled = state.reviewCardIndex === reviewFlashcards.length - 1;
+        }
+
+        function renderRedFlags() {
+            const container = document.getElementById('red-flags-container');
+            const progress = (state.redFlagsChecked.size / redFlags.length) * 100;
+            document.getElementById('alerts-progress').style.width = progress + '%';
+
+            container.innerHTML = redFlags.map((flag, index) => `
+                <div class="red-flag-item ${state.redFlagsChecked.has(index) ? 'checked' : ''}" data-index="${index}">
+                    <div class="red-flag-checkbox">${state.redFlagsChecked.has(index) ? '✓' : ''}</div>
+                    <div class="red-flag-text">${flag}</div>
+                </div>
+            `).join('');
+
+            if (state.redFlagsChecked.size === redFlags.length) {
+                document.getElementById('success-message').classList.add('show');
+            } else {
+                document.getElementById('success-message').classList.remove('show');
+            }
+        }
+
+        // ============================================
+        // EVENT LISTENERS
+        // ============================================
+
+        function setupEventListeners() {
+            // Navigation
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const screen = btn.dataset.screen;
+                    switchScreen(screen, btn);
+                });
+            });
+
+            // Topic pills
+            document.addEventListener('click', (e) => {
+                if (e.target.classList.contains('topic-pill')) {
+                    state.currentTopic = e.target.dataset.topic;
+                    state.currentChunkIndex = 0;
+                    saveState();
+                    renderTopicPills();
+                    renderChunk();
+                }
+            });
+
+            // Learn mode
+            document.getElementById('learn-prev-btn').addEventListener('click', () => {
+                if (state.currentChunkIndex > 0) {
+                    state.currentChunkIndex--;
+                    saveState();
+                    renderChunk();
+                }
+            });
+
+            document.getElementById('learn-next-btn').addEventListener('click', () => {
+                const filteredChunks = chunks.filter(c => c.topic === state.currentTopic);
+                if (state.currentChunkIndex < filteredChunks.length - 1) {
+                    state.currentChunkIndex++;
+                    saveState();
+                    renderChunk();
+                }
+            });
+
+            // Quiz mode
+            document.addEventListener('click', (e) => {
+                if (e.target.classList.contains('quiz-option') && !state.quizAnswered) {
+                    const selectedIndex = parseInt(e.target.dataset.index);
+                    const question = quizQuestions[state.quizQuestionIndex];
+                    const isCorrect = selectedIndex === question.correct;
+
+                    e.target.classList.add('selected');
+
+                    document.querySelectorAll('.quiz-option').forEach((option, index) => {
+                        if (index === question.correct) {
+                            option.classList.add('correct');
+                        } else if (index === selectedIndex && !isCorrect) {
+                            option.classList.add('incorrect');
+                        }
+                        option.style.pointerEvents = 'none';
+                    });
+
+                    const feedbackContainer = document.getElementById('quiz-feedback-container');
+                    if (isCorrect) {
+                        state.quizScore++;
+                        state.quizStreak++;
+                        feedbackContainer.innerHTML = '<div class="quiz-feedback correct">Correct! Well done.</div>';
+                    } else {
+                        state.quizStreak = 0;
+                        feedbackContainer.innerHTML = '<div class="quiz-feedback incorrect">Incorrect. Review the material and try again.</div>';
+                    }
+                    document.getElementById('quiz-score-value').textContent = state.quizScore;
+                    document.getElementById('quiz-streak').textContent = `Streak: ${state.quizStreak}`;
+
+                    document.getElementById('quiz-next-btn').style.display = 'block';
+                    state.quizAnswered = true;
+                    saveState();
+                }
+            });
+
+            document.getElementById('quiz-next-btn').addEventListener('click', () => {
+                if (state.quizCompleted) {
+                    state.quizScore = 0;
+                    state.quizStreak = 0;
+                    state.quizQuestionIndex = 0;
+                    state.quizCompleted = false;
+                    document.getElementById('quiz-next-btn').textContent = 'Next Question';
+                    document.getElementById('quiz-score-value').textContent = '0';
+                    saveState();
+                    renderQuizQuestion();
+                    return;
+                }
+                state.quizQuestionIndex++;
+                if (state.quizQuestionIndex >= quizQuestions.length) {
+                    state.quizCompleted = true;
+                    renderQuizComplete();
+                } else {
+                    renderQuizQuestion();
+                }
+                saveState();
+            });
+
+            // Drill mode
+            document.getElementById('drill-submit-btn').addEventListener('click', () => {
+                if (!document.getElementById('scenario-response').value.trim()) {
+                    document.getElementById('scenario-response').style.borderColor = 'var(--danger)';
+                    document.getElementById('scenario-response').setAttribute('placeholder', 'Please write your response before submitting...');
+                    return;
+                }
+                const modelAnswerDiv = document.getElementById('model-answer');
+                const scenario = drillScenarios[state.drillScenarioIndex];
+                document.getElementById('model-answer-text').textContent = scenario.modelAnswer;
+                modelAnswerDiv.classList.add('show');
+                document.getElementById('drill-submit-btn').style.display = 'none';
+                document.getElementById('drill-next-btn').style.display = 'block';
+                state.drillAnswered = true;
+            });
+
+            document.getElementById('drill-next-btn').addEventListener('click', () => {
+                state.drillScenarioIndex = (state.drillScenarioIndex + 1) % drillScenarios.length;
+                document.getElementById('drill-submit-btn').style.display = 'block';
+                saveState();
+                renderDrillScenario();
+            });
+
+            // Review mode
+            document.getElementById('flashcard').addEventListener('click', () => {
+                state.reviewFlipped = !state.reviewFlipped;
+                renderFlashcard();
+            });
+
+            document.getElementById('review-prev-btn').addEventListener('click', () => {
+                if (state.reviewCardIndex > 0) {
+                    state.reviewCardIndex--;
+                    state.reviewFlipped = false;
+                    saveState();
+                    renderFlashcard();
+                }
+            });
+
+            document.getElementById('review-next-btn').addEventListener('click', () => {
+                if (state.reviewCardIndex < reviewFlashcards.length - 1) {
+                    state.reviewCardIndex++;
+                    state.reviewFlipped = false;
+                    saveState();
+                    renderFlashcard();
+                }
+            });
+
+            document.getElementById('review-reset-btn').addEventListener('click', () => {
+                state.reviewCardIndex = 0;
+                state.reviewFlipped = false;
+                saveState();
+                renderFlashcard();
+            });
+
+            // Alerts mode
+            document.addEventListener('click', (e) => {
+                if (e.target.closest('.red-flag-item')) {
+                    const index = parseInt(e.target.closest('.red-flag-item').dataset.index);
+                    if (state.redFlagsChecked.has(index)) {
+                        state.redFlagsChecked.delete(index);
+                    } else {
+                        state.redFlagsChecked.add(index);
+                    }
+                    saveState();
+                    renderRedFlags();
+                }
+            });
+        }
+
+        function switchScreen(screenId, navBtn) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+
+            document.getElementById(screenId).classList.add('active');
+            navBtn.classList.add('active');
+        }
+
+        // ============================================
+        // START APP
+        // ============================================
+
+        init();
+    </script>
+</body>
+</html>
+</html>

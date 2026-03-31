@@ -1,0 +1,22 @@
+CHUNK 623: Eggs (Allergen #4)
+PEG: 623 = Leche (milk) + Nemo (the fish character)
+CONCEPTS: 1) Chicken eggs 2) Duck eggs 3) Mayonnaise 4) Hollandaise 5) Pasta 6) Cakes 7) Meringue peaks 8) Quiche 9) Batter 10) Sausages 11) Egg wash on pastry
+
+PROMPT:
+3D animated scene, Pixar movie quality render, cartoon characters with exaggerated proportions, whimsical atmosphere, cinematic lighting, vibrant colors, stylized textures. NEMO THE FISH (sculpted from glossy white milk with huge expressive eyes and impossible orange-white stripes rendered in dairy texture, swimming upward as the hero peg object) bursts through a galaxy of eggs creating explosive splashes—dozens of cracked and whole chicken eggs with golden yolks visible, duck eggs with their deeper cream tone spinning past, thick glossy mayonnaise pools forming little oceans and colliding, ribbon-streams of hollandaise cascading down like yellow waterfalls in fast motion, cooked pasta spiraling in egg-white clouds, a massive cake with towering meringue peaks threatening to topple majestically, a golden quiche tilted and tumbling, whipped batter swirling in slow-motion arcs, sausages curving through the composition like dynamic paths, and pastry brushed with egg wash gleaming with amber highlights. The milk-made-Nemo accelerates upward, leaving trails of iridescence, warm honeyed light creates halos around every element, and the entire composition swells with energy and movement.
+
+No text, no watermarks, no logos, no UI elements.
+
+COVERAGE:
+✓ Chicken eggs = dozens scattered (throughout frame)
+✓ Duck eggs = cream-toned group (upper-left)
+✓ Mayonnaise = glossy pools (center-right)
+✓ Hollandaise = cascading yellow waterfalls (right side)
+✓ Pasta = nestled in clouds (mid-ground)
+✓ Cakes = massive meringue tower (upper-center)
+✓ Meringue peaks = dramatic topple composition (upper-right)
+✓ Quiche = golden tilted element (lower-right)
+✓ Batter = swirling slow-motion (lower-left)
+✓ Sausages = curved path elements (periphery)
+✓ Egg wash = amber-glazed pastry highlights (scattered)
+✓ Milk/Nemo = hero fish element center

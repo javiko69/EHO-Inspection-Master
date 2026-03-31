@@ -1,0 +1,22 @@
+CHUNK 621: Cereals Containing Gluten (Allergen #2)
+PEG: 621 = Leche (milk) + Nata (cream)
+CONCEPTS: 1) Wheat grain field 2) Barley stalks 3) Rye 4) Oats 5) Bread loaves 6) Pasta 7) Biscuits 8) Soy sauce bottle 9) Beer mug 10) Condiments 11) Sausages
+
+PROMPT:
+3D animated scene, Pixar movie quality render, cartoon characters with exaggerated proportions, whimsical atmosphere, cinematic lighting, vibrant colors, stylized textures. A colossal WHIPPED CREAM DOLLOP (made entirely of glossy white milk, hero center object with enormous presence and internal luminescence) dominates a surreal grain harvest where wheat sheaves stand like soldiers at attention, barley stalks with detailed awns catch the light, earthen bowls of oats overflow chaotically, a freshly-baked bread loaf emerges from creamy drifts, and curled pasta strands float like golden ribbons through milky mist. A vintage glass bottle of soy sauce casts dark shadows, a foaming beer mug tilts at an impossible angle about to splash into the cream, sausage links curve around the composition, biscuits and pastries stack like stepping stones, and condiment jars with glowing labels surround everything. The milk-dollop bursts with energy, grain particles exploding through the air in slow-motion cascades, volumetric god rays pierce down from above, and golden morning light creates halos of exaggerated beauty around every suspended speck.
+
+No text, no watermarks, no logos, no UI elements.
+
+COVERAGE:
+✓ Wheat grain = golden sheaves (left foreground)
+✓ Barley stalks = detailed awns catching light (center-right)
+✓ Rye = brown stalk bundle (mid-ground)
+✓ Oats = earthen bowls (right side)
+✓ Bread loaves = emerging from cream (left-center)
+✓ Pasta = floating ribbons (background)
+✓ Biscuits & pastry = stacked elements (center)
+✓ Soy sauce = glass bottle casting shadow (rear-left)
+✓ Beer = foaming mug tilted dramatically (upper-right)
+✓ Sausages = curved links around base (periphery)
+✓ Condiments = glowing jars (surround composition)
+✓ Milk/cream = HERO dollop at center
