@@ -285,6 +285,60 @@
             color: var(--dark-green);
         }
 
+        .allergen-index {
+            padding: 0.5rem 0;
+        }
+
+        .allergen-index-header {
+            background: linear-gradient(135deg, var(--light-green), var(--medium-green));
+            color: white;
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+
+        .allergen-index-item {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem 0.75rem;
+            border-bottom: 1px solid #e5e7eb;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: background 0.15s;
+        }
+
+        .allergen-index-item:hover {
+            background-color: var(--pale-green);
+        }
+
+        .allergen-index-item:last-child {
+            border-bottom: none;
+        }
+
+        .allergen-index-num {
+            font-weight: 700;
+            color: var(--medium-green);
+            min-width: 36px;
+            font-size: 0.85rem;
+        }
+
+        .allergen-index-peg {
+            color: #6b7280;
+            min-width: 60px;
+            font-size: 0.85rem;
+            font-style: italic;
+        }
+
+        .allergen-index-name {
+            font-weight: 600;
+            color: var(--dark-green);
+            flex: 1;
+        }
+
         .chunk-image {
             margin-top: 0.75rem;
             border-radius: 8px;
@@ -1560,15 +1614,62 @@
             ).join('');
         }
 
+        const allergenPegs = {
+            620: 'Nasa', 621: 'Nata', 622: 'Nana', 623: 'Nemo', 624: 'Noria',
+            625: 'Nilo', 626: 'Anejo', 627: 'Inca', 628: 'Nicho', 629: 'Naipe',
+            630: 'Masa', 631: 'Mata', 632: 'Maná', 633: 'Mamá', 634: 'Mar'
+        };
+
+        function renderAllergenIndex(filteredChunks) {
+            document.getElementById('learn-progress').style.width = '0%';
+            document.getElementById('learn-counter').textContent = `Index`;
+            document.getElementById('chunk-number').textContent = '600s';
+            document.getElementById('chunk-title').textContent = 'The 14 Allergens — Index';
+
+            let items = filteredChunks.map((chunk, idx) => {
+                const peg = allergenPegs[chunk.id] || '';
+                return `<div class="allergen-index-item" data-chunk-idx="${idx}">
+                    <span class="allergen-index-num">${chunk.id}</span>
+                    <span class="allergen-index-peg">${peg}</span>
+                    <span class="allergen-index-name">${chunk.title}</span>
+                </div>`;
+            }).join('');
+
+            document.getElementById('chunk-content').innerHTML = `
+                <div class="allergen-index">
+                    <div class="allergen-index-header">🥛 600s = LECHE (milk texture)</div>
+                    ${items}
+                </div>`;
+
+            document.getElementById('learn-prev-btn').disabled = true;
+            document.getElementById('learn-next-btn').disabled = false;
+
+            document.querySelectorAll('.allergen-index-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    state.currentChunkIndex = parseInt(item.dataset.chunkIdx) + 1;
+                    saveState();
+                    renderChunk();
+                });
+            });
+        }
+
         function renderChunk() {
             const filteredChunks = chunks.filter(c => c.topic === state.currentTopic);
-            const chunk = filteredChunks[state.currentChunkIndex];
+
+            if (state.currentTopic === 'The 14 Allergens' && state.currentChunkIndex === 0) {
+                renderAllergenIndex(filteredChunks);
+                return;
+            }
+
+            const chunkIdx = state.currentTopic === 'The 14 Allergens' ? state.currentChunkIndex - 1 : state.currentChunkIndex;
+            const chunk = filteredChunks[chunkIdx];
 
             if (!chunk) return;
 
-            const progress = ((state.currentChunkIndex + 1) / filteredChunks.length) * 100;
+            const totalPages = state.currentTopic === 'The 14 Allergens' ? filteredChunks.length + 1 : filteredChunks.length;
+            const progress = ((state.currentChunkIndex + 1) / totalPages) * 100;
             document.getElementById('learn-progress').style.width = progress + '%';
-            document.getElementById('learn-counter').textContent = `${state.currentChunkIndex + 1} of ${filteredChunks.length}`;
+            document.getElementById('learn-counter').textContent = `${state.currentChunkIndex} of ${filteredChunks.length}`;
             document.getElementById('chunk-number').textContent = chunk.id;
             document.getElementById('chunk-title').textContent = chunk.title;
 
@@ -1590,7 +1691,8 @@
             document.getElementById('chunk-content').innerHTML = content;
 
             document.getElementById('learn-prev-btn').disabled = state.currentChunkIndex === 0;
-            document.getElementById('learn-next-btn').disabled = state.currentChunkIndex === filteredChunks.length - 1;
+            const maxIdx = state.currentTopic === 'The 14 Allergens' ? filteredChunks.length : filteredChunks.length - 1;
+            document.getElementById('learn-next-btn').disabled = state.currentChunkIndex >= maxIdx;
         }
 
         function renderQuizQuestion() {
@@ -1714,7 +1816,8 @@
 
             document.getElementById('learn-next-btn').addEventListener('click', () => {
                 const filteredChunks = chunks.filter(c => c.topic === state.currentTopic);
-                if (state.currentChunkIndex < filteredChunks.length - 1) {
+                const maxIdx = state.currentTopic === 'The 14 Allergens' ? filteredChunks.length : filteredChunks.length - 1;
+                if (state.currentChunkIndex < maxIdx) {
                     state.currentChunkIndex++;
                     saveState();
                     renderChunk();
